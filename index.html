@@ -1,58 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Musfira Mujeeb | Full-Stack Development & Application Security</title>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Musfira Mujeeb | Full-Stack Developer & Security Mindset</title>
   <meta
     name="description"
-    content="Musfira Mujeeb is an Information Systems undergraduate focused on full-stack development, secure APIs, web application security, and modern digital products."
-  >
-
-  <meta name="author" content="Musfira Mujeeb">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+    content="Musfira Mujeeb is a full-stack developer and cybersecurity-focused software engineer building secure, modern web applications."
+  />
+  <meta name="author" content="Musfira Mujeeb" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
     rel="stylesheet"
-  >
-
+  />
   <style>
     :root {
-      --bg: #080b14;
-      --bg-soft: #0d1220;
-      --card: rgba(17, 24, 39, 0.78);
-      --card-solid: #111827;
+      --bg: #070b14;
+      --bg-soft: #0d1423;
+      --panel: rgba(17, 24, 39, 0.9);
+      --panel-strong: #101827;
+      --card: rgba(15, 23, 42, 0.8);
+      --card-2: rgba(17, 24, 39, 0.8);
       --text: #f8fafc;
-      --muted: #94a3b8;
-      --muted-light: #cbd5e1;
-      --border: rgba(148, 163, 184, 0.18);
+      --muted: #a8b4c7;
+      --muted-2: #cbd5e1;
       --primary: #8b5cf6;
-      --primary-light: #a78bfa;
-      --cyan: #22d3ee;
+      --primary-2: #a78bfa;
+      --cyan: #67e8f9;
       --green: #34d399;
-      --shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
-      --radius: 22px;
+      --red: #f87171;
+      --border: rgba(148, 163, 184, 0.18);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      --radius: 20px;
     }
 
     body.light-mode {
       --bg: #f8fafc;
       --bg-soft: #eef2ff;
-      --card: rgba(255, 255, 255, 0.86);
-      --card-solid: #ffffff;
-      --text: #111827;
-      --muted: #64748b;
-      --muted-light: #334155;
-      --border: rgba(51, 65, 85, 0.14);
+      --panel: rgba(255, 255, 255, 0.92);
+      --panel-strong: #ffffff;
+      --card: rgba(255, 255, 255, 0.94);
+      --card-2: #f1f5f9;
+      --text: #0f172a;
+      --muted: #475569;
+      --muted-2: #334155;
       --primary: #6d28d9;
-      --primary-light: #7c3aed;
-      --cyan: #0891b2;
+      --primary-2: #7c3aed;
+      --cyan: #0ea5e9;
       --green: #059669;
-      --shadow: 0 24px 70px rgba(79, 70, 229, 0.12);
+      --red: #dc2626;
+      --border: rgba(15, 23, 42, 0.1);
+      --shadow: 0 20px 60px rgba(99, 102, 241, 0.12);
     }
 
     * {
@@ -66,27 +66,28 @@
     }
 
     body {
-      min-width: 320px;
-      overflow-x: hidden;
-      background: var(--bg);
+      background:
+        radial-gradient(circle at top, rgba(139, 92, 246, 0.16), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(103, 232, 249, 0.12), transparent 35%),
+        var(--bg);
       color: var(--text);
       font-family: "Inter", sans-serif;
       line-height: 1.6;
       transition: background 0.3s ease, color 0.3s ease;
+      overflow-x: hidden;
     }
 
     body::before {
       position: fixed;
-      z-index: -1;
-      top: -180px;
-      left: 50%;
-      width: 700px;
-      height: 500px;
-      border-radius: 50%;
-      background: rgba(139, 92, 246, 0.13);
+      inset: -150px auto auto 50%;
       content: "";
-      filter: blur(100px);
+      width: 700px;
+      height: 600px;
+      border-radius: 50%;
+      background: rgba(139, 92, 246, 0.11);
+      filter: blur(120px);
       transform: translateX(-50%);
+      z-index: -1;
       pointer-events: none;
     }
 
@@ -95,15 +96,14 @@
       text-decoration: none;
     }
 
-    button,
-    a {
-      -webkit-tap-highlight-color: transparent;
+    button {
+      font: inherit;
     }
 
     button:focus-visible,
     a:focus-visible {
       outline: 3px solid var(--cyan);
-      outline-offset: 4px;
+      outline-offset: 3px;
     }
 
     .container {
@@ -112,12 +112,11 @@
     }
 
     .mono {
-      color: var(--cyan);
-      font-family: "DM Mono", monospace;
+      font-family: "JetBrains Mono", monospace;
     }
 
     .gradient-text {
-      background: linear-gradient(110deg, var(--primary-light), var(--cyan));
+      background: linear-gradient(120deg, var(--primary-2), var(--cyan));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -127,43 +126,43 @@
       padding: 110px 0;
     }
 
-    .section-heading {
-      max-width: 700px;
-      margin-bottom: 48px;
+    .section-head {
+      max-width: 720px;
+      margin-bottom: 42px;
     }
 
-    .section-label {
+    .eyebrow {
+      display: inline-block;
       margin-bottom: 12px;
       color: var(--cyan);
-      font-family: "DM Mono", monospace;
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
     }
 
     .section-title {
-      margin-bottom: 16px;
-      font-size: clamp(2rem, 5vw, 3.5rem);
+      margin-bottom: 12px;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
       line-height: 1.1;
     }
 
-    .section-description {
+    .section-copy {
       color: var(--muted);
       font-size: 1.05rem;
     }
 
-    /* Navigation */
-
+    /* NAV */
     .navbar {
       position: fixed;
-      z-index: 1000;
+      z-index: 999;
       top: 0;
-      right: 0;
       left: 0;
+      right: 0;
       border-bottom: 1px solid transparent;
-      background: rgba(8, 11, 20, 0.7);
+      background: rgba(7, 11, 20, 0.72);
       backdrop-filter: blur(18px);
-      transition: border 0.3s ease, background 0.3s ease;
+      transition: all 0.25s ease;
     }
 
     body.light-mode .navbar {
@@ -174,24 +173,24 @@
       border-bottom-color: var(--border);
     }
 
-    .nav-container {
+    .nav-inner {
       min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .logo {
+    .brand {
       display: grid;
       place-items: center;
-      width: 44px;
-      height: 44px;
-      border: 1px solid rgba(167, 139, 250, 0.4);
+      width: 46px;
+      height: 46px;
       border-radius: 14px;
-      background: linear-gradient(135deg, var(--primary), #4f46e5);
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
       color: white;
       font-weight: 800;
-      letter-spacing: -0.06em;
+      letter-spacing: -0.05em;
+      box-shadow: 0 12px 30px rgba(139, 92, 246, 0.3);
     }
 
     .nav-right {
@@ -203,13 +202,12 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 26px;
+      gap: 28px;
       list-style: none;
     }
 
     .nav-links a {
-      color: var(--muted-light);
-      font-size: 0.9rem;
+      color: var(--muted-2);
       font-weight: 600;
       transition: color 0.2s ease;
     }
@@ -220,47 +218,55 @@
 
     .theme-toggle,
     .menu-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 12px;
       background: transparent;
       color: var(--text);
       cursor: pointer;
-      font-size: 1rem;
-      padding: 9px 11px;
+      transition: all 0.2s ease;
+    }
+
+    .theme-toggle:hover,
+    .menu-toggle:hover {
+      border-color: rgba(103, 232, 249, 0.35);
     }
 
     .menu-toggle {
       display: none;
     }
 
-    /* Hero */
-
+    /* HERO */
     .hero {
+      padding: 150px 0 90px;
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding: 150px 0 100px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
+      grid-template-columns: 1.2fr 0.8fr;
       align-items: center;
-      gap: 80px;
+      gap: 70px;
     }
 
-    .status {
+    .status-pill {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
-      margin-bottom: 25px;
+      gap: 10px;
+      padding: 8px 14px;
       border: 1px solid rgba(52, 211, 153, 0.25);
       border-radius: 999px;
       background: rgba(52, 211, 153, 0.08);
       color: var(--green);
-      padding: 8px 13px;
-      font-family: "DM Mono", monospace;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 26px;
     }
 
     .status-dot {
@@ -268,156 +274,213 @@
       height: 8px;
       border-radius: 50%;
       background: var(--green);
-      box-shadow: 0 0 14px var(--green);
+      box-shadow: 0 0 18px var(--green);
     }
 
     .hero h1 {
-      max-width: 850px;
-      margin-bottom: 24px;
-      font-size: clamp(3rem, 8vw, 6.7rem);
-      letter-spacing: -0.07em;
-      line-height: 0.98;
+      margin-bottom: 20px;
+      font-size: clamp(3.2rem, 8vw, 6.7rem);
+      line-height: 0.96;
+      letter-spacing: -0.08em;
     }
 
     .hero-subtitle {
-      max-width: 700px;
-      margin-bottom: 25px;
-      color: var(--muted-light);
-      font-size: clamp(1.25rem, 3vw, 1.8rem);
-      line-height: 1.3;
+      margin-bottom: 20px;
+      color: var(--muted-2);
+      font-size: clamp(1.2rem, 2vw, 1.8rem);
+      line-height: 1.35;
     }
 
     .hero-description {
-      max-width: 680px;
-      margin-bottom: 34px;
+      max-width: 670px;
       color: var(--muted);
-      font-size: 1.05rem;
+      font-size: 1.06rem;
+      margin-bottom: 30px;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
+      margin-bottom: 30px;
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 9px;
+      gap: 10px;
       border: 1px solid transparent;
       border-radius: 12px;
-      padding: 13px 19px;
-      font-size: 0.92rem;
+      padding: 14px 20px;
       font-weight: 700;
-      transition: transform 0.25s ease, border 0.25s ease, background 0.25s ease;
+      transition: transform 0.2s ease, border 0.2s ease;
     }
 
     .button:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
     }
 
     .button-primary {
-      background: linear-gradient(110deg, var(--primary), #4f46e5);
+      background: linear-gradient(120deg, var(--primary), var(--primary-2));
       color: white;
-      box-shadow: 0 12px 30px rgba(99, 102, 241, 0.25);
+      box-shadow: 0 14px 26px rgba(124, 58, 237, 0.25);
     }
 
     .button-secondary {
       border-color: var(--border);
-      background: var(--card);
+      background: rgba(255, 255, 255, 0.02);
       color: var(--text);
     }
 
+    .mini-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .mini-stat {
+      min-width: 160px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 14px 16px;
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-size: 1.2rem;
+      color: var(--text);
+    }
+
+    .mini-stat span {
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
     .hero-visual {
-      position: relative;
       display: flex;
       justify-content: center;
-    }
-
-    .profile-wrapper {
       position: relative;
-      width: min(340px, 75vw);
-      height: min(340px, 75vw);
     }
 
-    .profile-wrapper::before {
+    .profile-wrap {
+      position: relative;
+      width: min(360px, 78vw);
+      height: min(360px, 78vw);
+    }
+
+    .profile-wrap:before {
       position: absolute;
       inset: -18px;
-      border: 1px solid rgba(139, 92, 246, 0.35);
-      border-radius: 50%;
       content: "";
-      animation: spin 22s linear infinite;
+      border: 1px solid rgba(139, 92, 246, 0.34);
+      border-radius: 50%;
+      animation: spin 24s linear infinite;
     }
 
-    .profile-wrapper::after {
+    .profile-wrap:after {
       position: absolute;
-      top: 3%;
-      right: 4%;
-      width: 13px;
-      height: 13px;
+      top: 16px;
+      right: 20px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
       background: var(--cyan);
-      box-shadow: 0 0 25px var(--cyan);
+      box-shadow: 0 0 18px var(--cyan);
       content: "";
     }
 
     .profile-image {
       width: 100%;
       height: 100%;
-      border: 8px solid var(--card-solid);
-      border-radius: 50%;
       object-fit: cover;
+      border-radius: 50%;
+      border: 8px solid var(--panel-strong);
       box-shadow: var(--shadow);
     }
 
-    .code-card {
+    .terminal-card {
       position: absolute;
-      right: -45px;
-      bottom: -25px;
-      width: 240px;
+      right: -10px;
+      bottom: -18px;
+      width: 250px;
       border: 1px solid var(--border);
       border-radius: 16px;
-      background: rgba(17, 24, 39, 0.9);
-      padding: 17px;
+      background: rgba(10, 15, 25, 0.95);
       box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    body.light-mode .terminal-card {
+      background: rgba(255, 255, 255, 0.96);
+    }
+
+    .terminal-bar {
+      display: flex;
+      gap: 8px;
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .terminal-bar span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .terminal-bar span:nth-child(1) { background: #f87171; }
+    .terminal-bar span:nth-child(2) { background: #fbbf24; }
+    .terminal-bar span:nth-child(3) { background: #4ade80; }
+
+    .terminal-content {
+      padding: 16px 18px;
+      font-family: "JetBrains Mono", monospace;
+      color: #a5f3fc;
+      font-size: 0.7rem;
+      line-height: 1.9;
+    }
+
+    .terminal-content .purple {
       color: #c4b5fd;
-      font-family: "DM Mono", monospace;
-      font-size: 0.72rem;
+    }
+    .terminal-content .green {
+      color: #86efac;
     }
 
-    body.light-mode .code-card {
-      background: rgba(255, 255, 255, 0.94);
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
 
-    .code-card span {
-      color: var(--cyan);
-    }
-
-    /* About */
-
+    /* ABOUT */
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 25px;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 26px;
     }
 
-    .glass-card {
+    .panel {
+      background: var(--panel);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      background: var(--card);
-      padding: 30px;
       box-shadow: var(--shadow);
       backdrop-filter: blur(14px);
     }
 
-    .glass-card p {
+    .panel-inner {
+      padding: 30px;
+    }
+
+    .about-copy {
       color: var(--muted);
+      font-size: 1.02rem;
     }
 
     .about-list {
       display: grid;
-      gap: 15px;
+      gap: 16px;
       list-style: none;
     }
 
@@ -425,42 +488,50 @@
       display: flex;
       gap: 12px;
       align-items: flex-start;
-      color: var(--muted-light);
+      color: var(--muted-2);
     }
 
     .about-list strong {
       display: block;
+      margin-bottom: 4px;
       color: var(--text);
     }
 
-    .about-icon {
+    .list-bullet {
       color: var(--cyan);
-      font-size: 1.2rem;
+      font-weight: 700;
+      margin-top: 2px;
     }
 
-    /* Skills */
-
+    /* SKILLS */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
     }
 
     .skill-card {
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: 18px;
       background: var(--card);
-      padding: 22px;
+      padding: 24px 18px;
       transition: transform 0.25s ease, border 0.25s ease;
     }
 
     .skill-card:hover {
-      border-color: rgba(139, 92, 246, 0.55);
       transform: translateY(-5px);
+      border-color: rgba(139, 92, 246, 0.42);
+    }
+
+    .skill-icon {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--cyan);
+      font-size: 1.7rem;
     }
 
     .skill-card h3 {
-      margin-bottom: 12px;
+      margin-bottom: 8px;
       font-size: 1rem;
     }
 
@@ -469,16 +540,94 @@
       font-size: 0.88rem;
     }
 
-    .skill-icon {
-      display: block;
-      margin-bottom: 13px;
-      color: var(--cyan);
-      font-size: 1.6rem;
+    /* TERMINAL FIXED SECTION */
+    .lab-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 26px;
+      align-items: stretch;
     }
 
-    /* Projects */
+    .terminal-shell {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #070d16;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
 
-    .filter-buttons {
+    .terminal-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .terminal-head span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .terminal-head span:nth-child(1) { background: #f87171; }
+    .terminal-head span:nth-child(2) { background: #fbbf24; }
+    .terminal-head span:nth-child(3) { background: #34d399; }
+
+    .terminal-body {
+      padding: 20px 18px;
+      min-height: 280px;
+      font-family: "JetBrains Mono", monospace;
+      color: #dcfce7;
+      font-size: 0.8rem;
+      line-height: 2;
+    }
+
+    .terminal-body .purple {
+      color: #c4b5fd;
+    }
+    .terminal-body .cyan {
+      color: #67e8f9;
+    }
+    .terminal-body .green {
+      color: #86efac;
+    }
+
+    .command-list {
+      display: grid;
+      gap: 10px;
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    .command-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+     	background: rgba(255, 255, 255, 0.02);
+      padding: 12px 14px;
+      color: var(--muted-2);
+      cursor: pointer;
+      transition: border 0.2s ease, transform 0.2s ease;
+    }
+
+    .command-item:hover {
+      border-color: rgba(103, 232, 249, 0.4);
+      transform: translateX(2px);
+    }
+
+    .command-item strong {
+      color: var(--cyan);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.82rem;
+    }
+
+    /*** PROJECTS ***/
+    .filter-wrap {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
@@ -489,62 +638,64 @@
       border: 1px solid var(--border);
       border-radius: 999px;
       background: transparent;
-      color: var(--muted-light);
+      color: var(--muted-2);
       cursor: pointer;
-      padding: 9px 15px;
-      font-size: 0.85rem;
-      font-weight: 600;
+      padding: 9px 14px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      transition: all 0.2s ease;
     }
 
     .filter-button.active,
     .filter-button:hover {
-      border-color: var(--primary);
-      background: rgba(139, 92, 246, 0.15);
-      color: var(--primary-light);
+      border-color: rgba(139, 92, 246, 0.5);
+      background: rgba(139, 92, 246, 0.12);
+      color: var(--primary-2);
     }
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
     }
 
     .project-card {
       display: flex;
       flex-direction: column;
-      min-height: 360px;
+      min-height: 330px;
       border: 1px solid var(--border);
       border-radius: var(--radius);
       background: var(--card);
-      padding: 26px;
+      padding: 26px 22px;
       box-shadow: var(--shadow);
       transition: transform 0.25s ease, border 0.25s ease;
     }
 
     .project-card:hover {
-      border-color: rgba(139, 92, 246, 0.6);
-      transform: translateY(-7px);
+      transform: translateY(-6px);
+      border-color: rgba(139, 92, 246, 0.45);
     }
 
     .project-card.hidden {
       display: none;
     }
 
-    .project-number {
-      margin-bottom: 25px;
+    .project-tag {
+      margin-bottom: 16px;
       color: var(--cyan);
-      font-family: "DM Mono", monospace;
-      font-size: 0.85rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: "JetBrains Mono", monospace;
     }
 
     .project-card h3 {
-      margin-bottom: 13px;
-      font-size: 1.35rem;
+      margin-bottom: 12px;
+      font-size: 1.38rem;
     }
 
     .project-card p {
       flex-grow: 1;
-      margin-bottom: 20px;
       color: var(--muted);
       font-size: 0.94rem;
     }
@@ -553,41 +704,40 @@
       display: flex;
       flex-wrap: wrap;
       gap: 7px;
-      margin-bottom: 22px;
+      margin: 18px 0 18px;
       list-style: none;
     }
 
     .tags li {
-      border: 1px solid rgba(139, 92, 246, 0.25);
+      border: 1px solid rgba(139, 92, 246, 0.2);
       border-radius: 999px;
-      background: rgba(139, 92, 246, 0.1);
-      color: var(--primary-light);
+      background: rgba(139, 92, 246, 0.08);
+      color: var(--primary-2);
       padding: 5px 9px;
-      font-family: "DM Mono", monospace;
       font-size: 0.7rem;
+      font-family: "JetBrains Mono", monospace;
     }
 
     .project-link {
       color: var(--cyan);
-      font-size: 0.9rem;
       font-weight: 700;
+      font-size: 0.9rem;
     }
 
-    /* Experience */
-
+    /* TIMELINE */
     .timeline {
       position: relative;
       display: grid;
-      gap: 25px;
-      margin-left: 15px;
-      padding-left: 30px;
+      gap: 24px;
+      padding-left: 18px;
+      margin-left: 10px;
     }
 
     .timeline::before {
       position: absolute;
+      left: 0;
       top: 0;
       bottom: 0;
-      left: 0;
       width: 1px;
       background: linear-gradient(var(--primary), var(--cyan));
       content: "";
@@ -598,124 +748,51 @@
       border: 1px solid var(--border);
       border-radius: 18px;
       background: var(--card);
-      padding: 25px;
+      padding: 24px;
+      box-shadow: var(--shadow);
     }
 
     .timeline-item::before {
       position: absolute;
-      top: 28px;
-      left: -36px;
+      left: -24px;
+      top: 30px;
       width: 11px;
       height: 11px;
-      border: 3px solid var(--bg);
       border-radius: 50%;
       background: var(--cyan);
-      box-shadow: 0 0 14px var(--cyan);
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 18px rgba(103, 232, 249, 0.8);
       content: "";
     }
 
     .timeline-date {
-      margin-bottom: 7px;
+      margin-bottom: 12px;
       color: var(--cyan);
-      font-family: "DM Mono", monospace;
-      font-size: 0.8rem;
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: "JetBrains Mono", monospace;
     }
 
     .timeline-item h3 {
-      margin-bottom: 4px;
-      font-size: 1.2rem;
+      margin-bottom: 6px;
+      font-size: 1.25rem;
     }
 
     .timeline-role {
       margin-bottom: 12px;
-      color: var(--primary-light);
-      font-weight: 600;
+      color: var(--primary-2);
+      font-weight: 700;
     }
 
     .timeline-item p {
       color: var(--muted);
     }
 
-    /* Security section */
-
-    .security-grid {
-      display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
-      gap: 25px;
-      align-items: stretch;
-    }
-
-    .security-list {
-      display: grid;
-      gap: 13px;
-      margin-top: 20px;
-      list-style: none;
-    }
-
-    .security-list li {
-      display: flex;
-      gap: 10px;
-      color: var(--muted-light);
-    }
-
-    .security-list li::before {
-      color: var(--green);
-      content: "✓";
-      font-weight: 800;
-    }
-
-    .terminal {
-      overflow: hidden;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: #05070d;
-      box-shadow: var(--shadow);
-      font-family: "DM Mono", monospace;
-    }
-
-    .terminal-bar {
-      display: flex;
-      gap: 7px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 14px;
-    }
-
-    .terminal-bar span {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #ef4444;
-    }
-
-    .terminal-bar span:nth-child(2) {
-      background: #f59e0b;
-    }
-
-    .terminal-bar span:nth-child(3) {
-      background: #22c55e;
-    }
-
-    .terminal-content {
-      min-height: 280px;
-      padding: 25px;
-      color: #a7f3d0;
-      font-size: 0.83rem;
-      line-height: 2;
-    }
-
-    .terminal-content .purple {
-      color: #c4b5fd;
-    }
-
-    .terminal-content .blue {
-      color: #67e8f9;
-    }
-
-    /* Achievements */
-
+    /* ACHIEVEMENTS */
     .achievement-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 20px;
     }
 
@@ -723,35 +800,35 @@
       border: 1px solid var(--border);
       border-radius: 18px;
       background: var(--card);
-      padding: 25px;
+      padding: 26px;
+      box-shadow: var(--shadow);
     }
 
     .achievement-card h3 {
       margin-bottom: 10px;
+      font-size: 1.12rem;
     }
 
     .achievement-card p {
       color: var(--muted);
     }
 
-    /* Contact */
-
+    /* CONTACT */
     .contact-box {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 30px;
+      gap: 28px;
       align-items: center;
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      background:
-        linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(34, 211, 238, 0.08)),
-        var(--card);
-      padding: 40px;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(103, 232, 249, 0.08)), var(--panel);
+      padding: 34px;
+      box-shadow: var(--shadow);
     }
 
     .contact-box h2 {
-      margin-bottom: 14px;
-      font-size: 2rem;
+      margin-bottom: 12px;
+      font-size: clamp(2rem, 4vw, 2.8rem);
     }
 
     .contact-box p {
@@ -769,28 +846,25 @@
       justify-content: space-between;
       border: 1px solid var(--border);
       border-radius: 12px;
-      background: rgba(255, 255, 255, 0.03);
-      padding: 13px 15px;
-      color: var(--muted-light);
-      font-size: 0.9rem;
-      transition: border 0.2s ease, color 0.2s ease;
+      background: rgba(255, 255, 255, 0.02);
+      padding: 12px 14px;
+      color: var(--muted-2);
+      transition: border 0.2s ease, transform 0.2s ease;
     }
 
     .contact-link:hover {
-      border-color: var(--cyan);
-      color: var(--cyan);
+      border-color: rgba(103, 232, 249, 0.5);
+      transform: translateX(2px);
     }
 
-    /* Footer */
-
+    /* FOOTER */
     footer {
       border-top: 1px solid var(--border);
-      padding: 30px 0;
+      padding: 28px 0 32px;
       color: var(--muted);
-      font-size: 0.88rem;
     }
 
-    .footer-content {
+    .footer-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -799,12 +873,11 @@
 
     .footer-note {
       color: var(--cyan);
-      font-family: "DM Mono", monospace;
-      font-size: 0.78rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.75rem;
     }
 
-    /* Animations */
-
+    /* REVEAL */
     .reveal {
       opacity: 0;
       transform: translateY(24px);
@@ -816,69 +889,39 @@
       transform: translateY(0);
     }
 
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        scroll-behavior: auto !important;
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-      }
-
-      .reveal {
-        opacity: 1;
-        transform: none;
-      }
-    }
-
-    /* Responsive layout */
-
-    @media (max-width: 950px) {
+    @media (max-width: 980px) {
       .hero-grid,
-      .security-grid {
+      .lab-grid,
+      .about-grid,
+      .contact-box {
         grid-template-columns: 1fr;
       }
 
-      .hero-visual {
-        order: -1;
-      }
-
-      .code-card {
-        right: 2%;
-      }
-
       .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
     @media (max-width: 760px) {
       .menu-toggle {
-        display: block;
+        display: inline-flex;
       }
 
       .nav-links {
         position: absolute;
         top: 76px;
-        right: 5%;
         left: 5%;
+        right: 5%;
         display: none;
         flex-direction: column;
         gap: 0;
-        overflow: hidden;
         border: 1px solid var(--border);
         border-radius: 14px;
-        background: var(--card-solid);
+        background: var(--panel-strong);
         box-shadow: var(--shadow);
       }
 
@@ -896,56 +939,11 @@
 
       .nav-links a {
         display: block;
-        padding: 14px 18px;
+        padding: 15px 18px;
       }
 
       .hero {
         padding-top: 130px;
-      }
-
-      .hero h1 {
-        font-size: clamp(3.1rem, 15vw, 5rem);
-      }
-
-      .about-grid,
-      .contact-box,
-      .achievement-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .contact-box {
-        padding: 28px;
-      }
-
-      .footer-content {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-    }
-
-    @media (max-width: 500px) {
-      .section {
-        padding: 80px 0;
-      }
-
-      .skills-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .profile-wrapper {
-        width: 250px;
-        height: 250px;
-      }
-
-      .code-card {
-        right: -10px;
-        bottom: -55px;
-        width: 210px;
-        font-size: 0.65rem;
       }
 
       .hero-actions {
@@ -955,14 +953,41 @@
       .button {
         width: 100%;
       }
+
+      .projects-grid,
+      .skills-grid,
+      .achievement-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .section {
+        padding: 80px 0;
+      }
+
+      .profile-wrap {
+        width: 260px;
+        height: 260px;
+      }
+
+      .terminal-card {
+        right: -8px;
+        width: 205px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <nav class="navbar" id="navbar" aria-label="Main navigation">
-    <div class="container nav-container">
-      <a href="#home" class="logo" aria-label="Musfira Mujeeb home">MM</a>
+  <nav class="navbar" aria-label="Main navigation" id="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="brand" aria-label="Go to homepage">MM</a>
 
       <div class="nav-right">
         <ul class="nav-links" id="nav-links">
@@ -977,8 +1002,8 @@
           class="theme-toggle"
           id="theme-toggle"
           type="button"
-          aria-label="Switch to light mode"
-          title="Toggle colour theme"
+          aria-label="Toggle dark mode"
+          title="Toggle dark mode"
         >
           ☀️
         </button>
@@ -987,7 +1012,7 @@
           class="menu-toggle"
           id="menu-toggle"
           type="button"
-          aria-label="Open navigation menu"
+          aria-label="Open menu"
           aria-expanded="false"
           aria-controls="nav-links"
         >
@@ -1001,7 +1026,7 @@
     <header class="hero" id="home">
       <div class="container hero-grid">
         <div class="reveal">
-          <div class="status">
+          <div class="status-pill">
             <span class="status-dot"></span>
             Open to software development and IT opportunities
           </div>
@@ -1012,46 +1037,63 @@
           </h1>
 
           <p class="hero-subtitle">
-            I’m <strong>Musfira Mujeeb</strong> — a Full-Stack Developer
-            and Application Security Enthusiast.
+            I’m <strong>Musfira Mujeeb</strong> — a Full-Stack Developer with a
+            strong interest in security and modern product engineering.
           </p>
 
           <p class="hero-description">
-            I build modern web applications using React, TypeScript,
-            Node.js, Express.js, MongoDB, Firebase, and secure API practices.
-            My goal is to create products that are useful, scalable, and
-            security-conscious from the beginning.
+            I design and build scalable web applications using React, TypeScript,
+            Node.js, Express.js, MongoDB, Firebase, and secure API patterns.
+            My interest lies in combining practical software development with
+            security-first thinking and real-world problem solving.
           </p>
 
           <div class="hero-actions">
-            <a href="#projects" class="button button-primary">
-              Explore my work →
-            </a>
+            <a href="#projects" class="button button-primary">Explore work →</a>
+            <a href="cv.pdf" class="button button-secondary" download>Download CV</a>
+            <a href="#contact" class="button button-secondary">Contact me</a>
+          </div>
 
-            <a href="cv.pdf" class="button button-secondary" download>
-              Download CV
-            </a>
-
-            <a href="#contact" class="button button-secondary">
-              Contact me
-            </a>
+          <div class="mini-stats">
+            <div class="mini-stat">
+              <strong>4+</strong>
+              <span>Key project areas</span>
+            </div>
+            <div class="mini-stat">
+              <strong>Full-stack</strong>
+              <span>Frontend + backend</span>
+            </div>
+            <div class="mini-stat">
+              <strong>Security</strong>
+              <span>Mindset-first engineering</span>
+            </div>
           </div>
         </div>
 
         <div class="hero-visual reveal">
-          <div class="profile-wrapper">
+          <div class="profile-wrap">
             <img
-              class="profile-image"
               src="profile.jpeg"
               alt="Portrait of Musfira Mujeeb"
-            >
+              class="profile-image"
+            />
 
-            <div class="code-card">
-              <span>const</span> focus = [<br>
-              &nbsp;&nbsp;"full-stack",<br>
-              &nbsp;&nbsp;"security",<br>
-              &nbsp;&nbsp;"impact"<br>
-              ];
+            <div class="terminal-card" aria-label="Terminal style summary">
+              <div class="terminal-bar">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+
+              <div class="terminal-content">
+                <span class="purple">const</span> focus = [<br />
+                &nbsp;&nbsp;"full-stack",<br />
+                &nbsp;&nbsp;"security",<br />
+                &nbsp;&nbsp;"product thinking"<br />
+                ];<br />
+                <br />
+                <span class="green">// open to work</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1060,76 +1102,75 @@
 
     <section class="section" id="about">
       <div class="container">
-        <div class="section-heading reveal">
-          <p class="section-label">01 / About</p>
-          <h2 class="section-title">
-            Engineering with curiosity and purpose.
-          </h2>
-          <p class="section-description">
-            I enjoy understanding how systems work, building useful products,
-            and improving the security and reliability of the applications I create.
+        <div class="section-head reveal">
+          <p class="eyebrow">01 / about</p>
+          <h2 class="section-title">Engineering with curiosity and purpose.</h2>
+          <p class="section-copy">
+            I enjoy building software that is useful, secure, and thoughtfully
+            designed. I care about how systems are structured, how data flows,
+            and how product decisions affect real users.
           </p>
         </div>
 
         <div class="about-grid">
-          <article class="glass-card reveal">
-            <p>
-              I am an Information Systems undergraduate at Sabaragamuwa
-              University of Sri Lanka with practical experience in frontend
-              development, backend engineering, secure API processing, and
-              real-time application features.
-            </p>
+          <div class="panel reveal">
+            <div class="panel-inner">
+              <p class="about-copy">
+                I am an Information Systems undergraduate at Sabaragamuwa
+                University of Sri Lanka, with a growing foundation in full-stack
+                development, application security, database design, and modern
+                front-end engineering. I enjoy solving problems through code,
+                building product-focused experiences, and improving the quality
+                and security of digital systems.
+              </p>
+            </div>
+          </div>
 
-            <br>
+          <div class="panel reveal">
+            <div class="panel-inner">
+              <ul class="about-list">
+                <li>
+                  <span class="list-bullet">▹</span>
+                  <span>
+                    <strong>Full-stack builder</strong>
+                    Developing responsive frontends and backend services with
+                    practical, scalable architecture in mind.
+                  </span>
+                </li>
 
-            <p>
-              My strongest interest is at the intersection of full-stack
-              development and application security. I want to build software
-              that is not only visually polished, but also thoughtfully
-              structured and protected against common risks.
-            </p>
-          </article>
+                <li>
+                  <span class="list-bullet">▹</span>
+                  <span>
+                    <strong>Security-minded engineer</strong>
+                    Focusing on JWT, API protection, rate limiting, sanitization,
+                    secure uploads, and safer default patterns.
+                  </span>
+                </li>
 
-          <article class="glass-card reveal">
-            <ul class="about-list">
-              <li>
-                <span class="about-icon">▹</span>
-                <span>
-                  <strong>Full-stack development</strong>
-                  React, Next.js, Node.js, Express.js, and REST APIs.
-                </span>
-              </li>
-
-              <li>
-                <span class="about-icon">▹</span>
-                <span>
-                  <strong>Security-conscious engineering</strong>
-                  JWT, Helmet, CORS, rate limiting, and sanitization.
-                </span>
-              </li>
-
-              <li>
-                <span class="about-icon">▹</span>
-                <span>
-                  <strong>Continuous learning</strong>
-                  Currently developing practical web application penetration
-                  testing skills.
-                </span>
-              </li>
-            </ul>
-          </article>
+                <li>
+                  <span class="list-bullet">▹</span>
+                  <span>
+                    <strong>Continuous learner</strong>
+                    Actively building skills through university projects,
+                    professional work, and structured security training.
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="section" id="skills">
       <div class="container">
-        <div class="section-heading reveal">
-          <p class="section-label">02 / Toolkit</p>
+        <div class="section-head reveal">
+          <p class="eyebrow">02 / toolkit</p>
           <h2 class="section-title">Technologies I work with.</h2>
-          <p class="section-description">
-            A growing technical toolkit built through academic work,
-            capstone development, internships, and independent learning.
+          <p class="section-copy">
+            My toolkit is built through academic projects, capstone work, and
+            hands-on software experience with a strong emphasis on real-world
+            application development.
           </p>
         </div>
 
@@ -1137,11 +1178,11 @@
           <article class="skill-card reveal">
             <span class="skill-icon">⌘</span>
             <h3>Frontend</h3>
-            <p>React, Next.js, TypeScript, JavaScript, HTML, CSS, Tailwind CSS, Vite.</p>
+            <p>React, Next.js, TypeScript, JavaScript, HTML, CSS, Tailwind, Vite.</p>
           </article>
 
           <article class="skill-card reveal">
-            <span class="skill-icon">⌁</span>
+            <span class="skill-icon">◧</span>
             <h3>Backend</h3>
             <p>Node.js, Express.js, REST APIs, Firebase Admin SDK, Socket.IO.</p>
           </article>
@@ -1149,73 +1190,119 @@
           <article class="skill-card reveal">
             <span class="skill-icon">◫</span>
             <h3>Databases</h3>
-            <p>MongoDB, Mongoose, MySQL, structured data modelling, and API data flows.</p>
+            <p>MongoDB, Mongoose, MySQL, structured modeling, and secure data flows.</p>
           </article>
 
           <article class="skill-card reveal">
             <span class="skill-icon">◈</span>
-            <h3>Application Security</h3>
-            <p>JWT, CORS, Helmet, rate limiting, sanitization, HTTPS, and secure uploads.</p>
+            <h3>Security</h3>
+            <p>JWT, CORS, rate limiting, sanitization, Helmet, secure file validation.</p>
           </article>
 
           <article class="skill-card reveal">
-            <span class="skill-icon">◉</span>
-            <h3>Cloud & Services</h3>
-            <p>Firebase, Cloudinary, authentication services, and deployment workflows.</p>
+            <span class="skill-icon">☁</span>
+            <h3>Cloud</h3>
+            <p>Firebase, Cloudinary, authentication services, deployment workflows.</p>
           </article>
 
           <article class="skill-card reveal">
-            <span class="skill-icon">⌘</span>
+            <span class="skill-icon">🛠</span>
             <h3>Tools</h3>
-            <p>Git, GitHub, VS Code, Android Studio, Vite, and collaborative workflows.</p>
+            <p>Git, GitHub, VS Code, Android Studio, version control, debugging.</p>
           </article>
 
           <article class="skill-card reveal">
             <span class="skill-icon">⚡</span>
-            <h3>Real-Time Systems</h3>
-            <p>Socket.IO messaging, notifications, and collaborative application features.</p>
+            <h3>Real-time</h3>
+            <p>Live updates, messaging, notifications, collaborative systems.</p>
           </article>
 
           <article class="skill-card reveal">
-            <span class="skill-icon">⌕</span>
-            <h3>Security Learning</h3>
-            <p>Reconnaissance, vulnerability testing, Burp Suite, and security reporting.</p>
+            <span class="skill-icon">🔐</span>
+            <h3>Security learning</h3>
+            <p>Reconnaissance, web security fundamentals, Burp Suite, reporting.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="security-lab">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">03 / security lab</p>
+          <h2 class="section-title">Security should be part of the build.</h2>
+          <p class="section-copy">
+            My interest in application security complements my development work.
+            I focus on building products that are not only functional, but also
+            more resilient to common vulnerabilities and misuse patterns.
+          </p>
+        </div>
+
+        <div class="lab-grid">
+          <div class="panel reveal">
+            <div class="panel-inner">
+              <h3>Security-aware engineering</h3>
+              <ul class="about-list" style="margin-top: 18px;">
+                <li><span class="list-bullet">✓</span><span>JWT-based authentication and authorization workflows</span></li>
+                <li><span class="list-bullet">✓</span><span>Helmet, CORS, and rate limiting for API protection</span></li>
+                <li><span class="list-bullet">✓</span><span>MongoDB sanitization and safer validation patterns</span></li>
+                <li><span class="list-bullet">✓</span><span>Secure upload handling and MIME validation practices</span></li>
+                <li><span class="list-bullet">✓</span><span>Reconnaissance and web vulnerability testing fundamentals</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="terminal-shell reveal" aria-label="Interactive terminal">
+            <div class="terminal-head">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="terminal-body">
+              <span class="purple">musfira@portfolio:~$</span> whoami<br />
+              Musfira Mujeeb<br /><br />
+
+              <span class="purple">musfira@portfolio:~$</span> focus<br />
+              <span class="cyan">[full-stack]</span> React, Node.js, Express.js, Firebase<br />
+              <span class="cyan">[security]</span> JWT, Helmet, CORS, sanitization, testing<br />
+              <span class="cyan">[product]</span> user experience, deployment, maintainability<br /><br />
+
+              <span class="purple">musfira@portfolio:~$</span> status<br />
+              <span class="green">OPEN TO SOFTWARE DEVELOPMENT & IT OPPORTUNITIES</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="section" id="projects">
       <div class="container">
-        <div class="section-heading reveal">
-          <p class="section-label">03 / Selected work</p>
+        <div class="section-head reveal">
+          <p class="eyebrow">04 / selected work</p>
           <h2 class="section-title">Projects with real-world direction.</h2>
-          <p class="section-description">
-            These projects best represent my current interests in full-stack
-            engineering, application security, and practical technology.
+          <p class="section-copy">
+            The projects below reflect my focus on product building, secure
+            systems, and meaningful digital work.
           </p>
         </div>
 
-        <div class="filter-buttons reveal" aria-label="Filter projects">
+        <div class="filter-wrap reveal" aria-label="Project filters">
           <button class="filter-button active" data-filter="all">All</button>
           <button class="filter-button" data-filter="fullstack">Full-stack</button>
           <button class="filter-button" data-filter="security">Security</button>
-          <button class="filter-button" data-filter="web">Web development</button>
-          <button class="filter-button" data-filter="machine-learning">Machine learning</button>
+          <button class="filter-button" data-filter="web">Web</button>
+          <button class="filter-button" data-filter="ml">Machine learning</button>
         </div>
 
         <div class="projects-grid">
           <article class="project-card reveal" data-category="fullstack">
-            <p class="project-number">01 / CAPSTONE PROJECT</p>
-
+            <p class="project-tag">Capstone project</p>
             <h3>LankaServe</h3>
-
             <p>
-              A multi-application service marketplace platform with
-              customer-facing and provider-facing experiences. I worked
-              across frontend and backend development while helping build
-              secure authentication, API processing, file uploads, and
-              real-time communication.
+              A multi-application service marketplace platform with customer and
+              provider experiences. I contributed to the system design and
+              development while working across frontend, backend, security,
+              authentication, and real-time features.
             </p>
 
             <ul class="tags">
@@ -1227,98 +1314,71 @@
               <li>Socket.IO</li>
             </ul>
 
-            <a
-              class="project-link"
-              href="https://github.com/MusfiraMujeeb"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View related work on GitHub ↗
+            <a href="https://github.com/MusfiraMujeeb" class="project-link" target="_blank" rel="noopener noreferrer">
+              Related GitHub work ↗
             </a>
           </article>
 
           <article class="project-card reveal" data-category="web">
-            <p class="project-number">02 / PROFESSIONAL WORK</p>
-
+            <p class="project-tag">Professional work</p>
             <h3>Laser Tech.lk</h3>
-
             <p>
-              Designed and developed the company's first website, establishing
-              its initial online presence. The work focused on responsive,
-              accessible interfaces, business requirements, deployment,
-              troubleshooting, and continuous improvement.
+              Designed and developed the company’s first website and established
+              its digital presence. The work involved responsive interface design,
+              business-driven improvements, troubleshooting, deployment, and Git-based version control.
             </p>
 
             <ul class="tags">
-              <li>Web development</li>
-              <li>Responsive design</li>
-              <li>Accessibility</li>
+              <li>Web design</li>
+              <li>Responsive</li>
+              <li>Business site</li>
               <li>Git</li>
               <li>Deployment</li>
             </ul>
 
-            <a
-              class="project-link"
-              href="https://github.com/MusfiraMujeeb"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View related work on GitHub ↗
+            <a href="https://github.com/MusfiraMujeeb" class="project-link" target="_blank" rel="noopener noreferrer">
+              Related GitHub work ↗
             </a>
           </article>
 
-          <article class="project-card reveal" data-category="machine-learning">
-            <p class="project-number">03 / COMPETITION PROJECT</p>
-
+          <article class="project-card reveal" data-category="ml">
+            <p class="project-tag">Competition project</p>
             <h3>DiaSaver</h3>
-
             <p>
-              An AI-powered diabetes risk assessment application created for
-              IDEALIZE 2025. The project combined a web-based interface with
-              machine-learning concepts to address a practical healthcare
-              technology problem.
+              An AI-powered diabetes risk assessment application created as part
+              of a team project. It combined machine-learning concepts with a
+              practical healthcare use case and a web-based user interface.
             </p>
 
             <ul class="tags">
-              <li>Machine learning</li>
-              <li>Healthcare technology</li>
-              <li>Web application</li>
-              <li>Team project</li>
+              <li>ML</li>
+              <li>Healthcare</li>
+              <li>Web app</li>
+              <li>Team</li>
             </ul>
 
-            <a
-              class="project-link"
-              href="https://github.com/MayooriEkanthan/DiaSaver"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View project on GitHub ↗
+            <a href="https://github.com/MayooriEkanthan/DiaSaver" class="project-link" target="_blank" rel="noopener noreferrer">
+              View on GitHub ↗
             </a>
           </article>
 
           <article class="project-card reveal" data-category="security">
-            <p class="project-number">04 / SECURITY FOCUS</p>
-
-            <h3>Application Security Practice</h3>
-
+            <p class="project-tag">Security focus</p>
+            <h3>Secure API Practice</h3>
             <p>
-              A growing security-focused practice covering secure API design,
-              JWT authentication, rate limiting, CORS configuration, Helmet,
-              MongoDB sanitization, secure file-upload validation, and
-              web application penetration testing fundamentals.
+              A security-focused learning area covering JWT, rate limiting, API
+              hardening, input validation, upload verification, and testing
+              workflows for safer app development.
             </p>
 
             <ul class="tags">
               <li>JWT</li>
+              <li>API</li>
               <li>Burp Suite</li>
-              <li>API security</li>
               <li>WAPT</li>
-              <li>Security testing</li>
             </ul>
 
-            <a href="#security" class="project-link">
-              Explore my security focus ↓
-            </a>
+            <a href="#security-lab" class="project-link">See security lab ↓</a>
           </article>
         </div>
       </div>
@@ -1326,107 +1386,58 @@
 
     <section class="section" id="experience">
       <div class="container">
-        <div class="section-heading reveal">
-          <p class="section-label">04 / Experience</p>
-          <h2 class="section-title">Learning through real responsibilities.</h2>
-          <p class="section-description">
-            Experience gained through professional work, academic projects,
-            and focused security training.
+        <div class="section-head reveal">
+          <p class="eyebrow">05 / experience</p>
+          <h2 class="section-title">Learning through responsibility and practice.</h2>
+          <p class="section-copy">
+            My experience blends professional work, academic projects, and
+            structured training in cybersecurity and application security.
           </p>
         </div>
 
         <div class="timeline">
           <article class="timeline-item reveal">
-            <p class="timeline-date">JAN 2026 — PRESENT</p>
+            <p class="timeline-date">Jan 2026 — Present</p>
             <h3>Web Development & Digital Support</h3>
             <p class="timeline-role">Laser Tech.lk</p>
             <p>
-              Developed and deployed the company's first website, created
-              responsive interfaces, resolved issues, delivered improvements,
-              and used Git throughout development and maintenance.
+              Developed and deployed the company’s first website, designed
+              user-centric responsive interfaces, resolved improvements and
+              technical issues, and used Git throughout the workflow.
             </p>
           </article>
 
           <article class="timeline-item reveal">
-            <p class="timeline-date">NOV 2025 — JUN 2026</p>
+            <p class="timeline-date">Nov 2025 — Jun 2026</p>
             <h3>Web Application Developer</h3>
             <p class="timeline-role">LankaServe — Capstone Project</p>
             <p>
-              Built React and TypeScript interfaces, developed Node.js and
-              Express.js backend services, integrated Firebase authentication,
-              implemented secure APIs, and contributed to Socket.IO messaging
-              and notification features.
+              Built frontend interfaces and backend services for a
+              service-marketplace platform, including structured MongoDB
+              modeling, Firebase authentication, secure REST APIs, and
+              real-time messaging features.
             </p>
           </article>
 
           <article class="timeline-item reveal">
-            <p class="timeline-date">SEP 2026 — OCT 2026</p>
+            <p class="timeline-date">Sep 2026 — Oct 2026</p>
             <h3>Web Application Penetration Testing Intern</h3>
             <p class="timeline-role">IqraSec Academy — Currently undertaking</p>
             <p>
-              Developing practical experience in reconnaissance, vulnerability
-              testing, Burp Suite, web security fundamentals, and security
-              reporting through the WAPT internship track.
+              Developing practical understanding in reconnaissance, web
+              vulnerability testing, Burp Suite usage, security reporting,
+              and security-focused testing methodology.
             </p>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="security">
-      <div class="container">
-        <div class="section-heading reveal">
-          <p class="section-label">05 / Security mindset</p>
-          <h2 class="section-title">Security should be considered early.</h2>
-          <p class="section-description">
-            My security focus complements my full-stack development work.
-            I aim to understand how applications can fail and how they can
-            be designed more responsibly.
-          </p>
-        </div>
-
-        <div class="security-grid">
-          <article class="glass-card reveal">
-            <h3>Security-aware development</h3>
-
-            <ul class="security-list">
-              <li>JWT authentication and authorization</li>
-              <li>Helmet security headers</li>
-              <li>CORS configuration</li>
-              <li>Rate limiting</li>
-              <li>MongoDB sanitization</li>
-              <li>MIME-type upload validation</li>
-              <li>Reconnaissance and vulnerability testing</li>
-              <li>Security reporting fundamentals</li>
-            </ul>
-          </article>
-
-          <div class="terminal reveal" aria-label="Security-themed code illustration">
-            <div class="terminal-bar">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-
-            <div class="terminal-content">
-              <span class="purple">$</span> inspect application<br>
-              <span class="blue">[INFO]</span> checking authentication...<br>
-              <span class="blue">[INFO]</span> checking request limits...<br>
-              <span class="blue">[INFO]</span> checking input handling...<br>
-              <span class="blue">[INFO]</span> checking upload validation...<br>
-              <span class="purple">[OK]</span> security mindset enabled<br>
-              <span class="purple">$</span> build responsibly
-            </div>
-          </div>
         </div>
       </div>
     </section>
 
     <section class="section" id="achievements">
       <div class="container">
-        <div class="section-heading reveal">
-          <p class="section-label">06 / Beyond the code</p>
-          <h2 class="section-title">Competitions and leadership.</h2>
+        <div class="section-head reveal">
+          <p class="eyebrow">06 / achievements</p>
+          <h2 class="section-title">Competition and leadership</h2>
         </div>
 
         <div class="achievement-grid">
@@ -1434,34 +1445,31 @@
             <h3>CodeRally 6.0</h3>
             <p>
               Participated in the Intermediate Tier with Team Code_Raiders,
-              organised by the IEEE Computer Society Student Branch Chapter
-              of IIT.
+              organized by the IEEE Computer Society Student Branch Chapter of IIT.
             </p>
           </article>
 
           <article class="achievement-card reveal">
             <h3>IDEALIZE 2025</h3>
             <p>
-              Contributed to DiaSaver as part of Team Web Wizards in an
-              innovation-focused competition organised by AIESEC University
-              of Moratuwa.
+              Contributed to DiaSaver as part of Team Web Wizards in a
+              innovation-focused competition organized by AIESEC University of Moratuwa.
             </p>
           </article>
 
           <article class="achievement-card reveal">
-            <h3>Leadership and community</h3>
+            <h3>Leadership</h3>
             <p>
-              Designer at the Leo Club, Event Coordinator at Rotaract, and
-              Student Member of the Society of Computer Sciences at
-              Sabaragamuwa University.
+              Designer at the Leo Club of Sabaragamuwa University, Event
+              Coordinator at Rotaract, and Student Member of the Society of Computer Sciences.
             </p>
           </article>
 
           <article class="achievement-card reveal">
             <h3>Education</h3>
             <p>
-              BSc (Hons) in Information Systems at Sabaragamuwa University
-              of Sri Lanka, 2024–2028.
+              BSc (Hons) in Information Systems, Sabaragamuwa University of Sri Lanka,
+              2024–2028.
             </p>
           </article>
         </div>
@@ -1472,50 +1480,32 @@
       <div class="container">
         <div class="contact-box reveal">
           <div>
-            <p class="section-label">07 / Contact</p>
+            <p class="eyebrow">07 / contact</p>
             <h2>Let’s build something useful.</h2>
             <p>
-              I am interested in software development, full-stack engineering,
-              IT, and application security opportunities.
+              I am interested in software development, IT opportunities,
+              internships, and application security-focused roles where I can
+              contribute and keep learning.
             </p>
           </div>
 
           <div class="contact-links">
-            <a
-              class="contact-link"
-              href="mailto:mushfiramujeeb22@gmail.com"
-            >
+            <a class="contact-link" href="mailto:mushfiramujeeb22@gmail.com">
               <span>Email</span>
               <span>↗</span>
             </a>
 
-            <a
-              class="contact-link"
-              href="https://www.linkedin.com/in/mushfira-mujeeb"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a class="contact-link" href="https://www.linkedin.com/in/mushfira-mujeeb-430453307" target="_blank" rel="noopener noreferrer">
               <span>LinkedIn</span>
               <span>↗</span>
             </a>
 
-            <a
-              class="contact-link"
-              href="https://github.com/MusfiraMujeeb"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a class="contact-link" href="https://github.com/MusfiraMujeeb" target="_blank" rel="noopener noreferrer">
               <span>GitHub</span>
               <span>↗</span>
             </a>
 
-            <!-- Replace YOUR_MEDIUM_USERNAME with your real Medium username -->
-            <a
-              class="contact-link"
-              href="https://musfiramujeeb22.medium.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a class="contact-link" href="https://musfiramujeeb22.medium.com/" target="_blank" rel="noopener noreferrer">
               <span>Medium</span>
               <span>↗</span>
             </a>
@@ -1526,128 +1516,95 @@
   </main>
 
   <footer>
-    <div class="container footer-content">
-      <p>
-        © 2026 Musfira Mujeeb. Built with intention and curiosity.
-      </p>
-
-      <p class="footer-note">
-        Secure by design · Always learning
-      </p>
+    <div class="container footer-inner">
+      <p>© 2026 Musfira Mujeeb. Built with curiosity and intention.</p>
+      <p class="footer-note">secure by design • learning continuously</p>
     </div>
   </footer>
 
   <script>
     const body = document.body;
     const navbar = document.getElementById("navbar");
-    const themeToggle = document.getElementById("theme-toggle");
     const menuToggle = document.getElementById("menu-toggle");
     const navLinks = document.getElementById("nav-links");
-    const filterButtons = document.querySelectorAll(".filter-button");
+    const themeToggle = document.getElementById("theme-toggle");
+    const projectButtons = document.querySelectorAll(".filter-button");
     const projectCards = document.querySelectorAll(".project-card");
 
-    // Theme preference
+    // Theme
     const savedTheme = localStorage.getItem("musfira-theme");
-
     if (
       savedTheme === "light" ||
-      (
-        savedTheme === null &&
-        !window.matchMedia("(prefers-color-scheme: dark)").matches
-      )
+      (savedTheme === null && !window.matchMedia("(prefers-color-scheme: dark)").matches)
     ) {
       body.classList.add("light-mode");
     }
 
     function updateThemeButton() {
-      const lightMode = body.classList.contains("light-mode");
-
-      themeToggle.textContent = lightMode ? "🌙" : "☀️";
+      const isLight = body.classList.contains("light-mode");
+      themeToggle.textContent = isLight ? "🌙" : "☀️";
       themeToggle.setAttribute(
         "aria-label",
-        lightMode ? "Switch to dark mode" : "Switch to light mode"
+        isLight ? "Switch to dark mode" : "Switch to light mode"
       );
     }
-
     updateThemeButton();
 
     themeToggle.addEventListener("click", () => {
       body.classList.toggle("light-mode");
-
-      localStorage.setItem(
-        "musfira-theme",
-        body.classList.contains("light-mode") ? "light" : "dark"
-      );
-
+      const nextTheme = body.classList.contains("light-mode") ? "light" : "dark";
+      localStorage.setItem("musfira-theme", nextTheme);
       updateThemeButton();
     });
 
-    // Mobile menu
-    menuToggle.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("open");
-
-      menuToggle.textContent = isOpen ? "✕" : "☰";
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
-      menuToggle.setAttribute(
-        "aria-label",
-        isOpen ? "Close navigation menu" : "Open navigation menu"
-      );
+    // Navbar scroll state
+    window.addEventListener("scroll", () => {
+      navbar.classList.toggle("scrolled", window.scrollY > 20);
     });
 
-    document.querySelectorAll(".nav-links a").forEach((link) => {
+    // Mobile nav
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.textContent = isOpen ? "✕" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
         navLinks.classList.remove("open");
-        menuToggle.textContent = "☰";
         menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.setAttribute("aria-label", "Open navigation menu");
+        menuToggle.textContent = "☰";
       });
     });
 
-    // Navbar background after scrolling
-    window.addEventListener("scroll", () => {
-      navbar.classList.toggle("scrolled", window.scrollY > 25);
-    });
-
-    // Project filtering
-    filterButtons.forEach((button) => {
+    // Project filter
+    projectButtons.forEach((button) => {
       button.addEventListener("click", () => {
         const filter = button.dataset.filter;
 
-        filterButtons.forEach((item) => {
-          item.classList.remove("active");
-        });
-
+        projectButtons.forEach((btn) => btn.classList.remove("active"));
         button.classList.add("active");
 
         projectCards.forEach((card) => {
           const category = card.dataset.category;
-          const shouldShow = filter === "all" || category === filter;
-
-          card.classList.toggle("hidden", !shouldShow);
+          const show = filter === "all" || category === filter;
+          card.classList.toggle("hidden", !show);
         });
       });
     });
 
-    // Scroll reveal animation
-    const revealElements = document.querySelectorAll(".reveal");
+    // Reveal on scroll
+    const revealItems = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
 
-    const revealObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.12
-      }
-    );
-
-    revealElements.forEach((element) => {
-      revealObserver.observe(element);
-    });
+    revealItems.forEach((item) => observer.observe(item));
   </script>
 </body>
 </html>
