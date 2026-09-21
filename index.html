@@ -4,36 +4,55 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Musfira Mujeeb | Portfolio</title>
+  <title>Musfira Mujeeb | Full-Stack Development & Application Security</title>
 
   <meta
     name="description"
-    content="Musfira Mujeeb's portfolio featuring projects, skills, education, and interests in information systems, web development, cybersecurity, and databases."
+    content="Musfira Mujeeb is an Information Systems undergraduate focused on full-stack development, secure APIs, web application security, and modern digital products."
+  >
+
+  <meta name="author" content="Musfira Mujeeb">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
   >
 
   <style>
     :root {
-      --background: #f8fafc;
-      --surface: #ffffff;
-      --surface-secondary: #eef2ff;
-      --text: #172033;
-      --muted: #64748b;
-      --primary: #6366f1;
-      --primary-dark: #4f46e5;
-      --border: #e2e8f0;
-      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --bg: #080b14;
+      --bg-soft: #0d1220;
+      --card: rgba(17, 24, 39, 0.78);
+      --card-solid: #111827;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --muted-light: #cbd5e1;
+      --border: rgba(148, 163, 184, 0.18);
+      --primary: #8b5cf6;
+      --primary-light: #a78bfa;
+      --cyan: #22d3ee;
+      --green: #34d399;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
+      --radius: 22px;
     }
 
-    body.dark-mode {
-      --background: #0f172a;
-      --surface: #1e293b;
-      --surface-secondary: #312e81;
-      --text: #f8fafc;
-      --muted: #cbd5e1;
-      --primary: #a5b4fc;
-      --primary-dark: #818cf8;
-      --border: #334155;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    body.light-mode {
+      --bg: #f8fafc;
+      --bg-soft: #eef2ff;
+      --card: rgba(255, 255, 255, 0.86);
+      --card-solid: #ffffff;
+      --text: #111827;
+      --muted: #64748b;
+      --muted-light: #334155;
+      --border: rgba(51, 65, 85, 0.14);
+      --primary: #6d28d9;
+      --primary-light: #7c3aed;
+      --cyan: #0891b2;
+      --green: #059669;
+      --shadow: 0 24px 70px rgba(79, 70, 229, 0.12);
     }
 
     * {
@@ -47,33 +66,116 @@
     }
 
     body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: var(--background);
+      min-width: 320px;
+      overflow-x: hidden;
+      background: var(--bg);
       color: var(--text);
+      font-family: "Inter", sans-serif;
       line-height: 1.6;
       transition: background 0.3s ease, color 0.3s ease;
     }
 
+    body::before {
+      position: fixed;
+      z-index: -1;
+      top: -180px;
+      left: 50%;
+      width: 700px;
+      height: 500px;
+      border-radius: 50%;
+      background: rgba(139, 92, 246, 0.13);
+      content: "";
+      filter: blur(100px);
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
     a {
       color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button:focus-visible,
+    a:focus-visible {
+      outline: 3px solid var(--cyan);
+      outline-offset: 4px;
     }
 
     .container {
-      width: min(1100px, 90%);
-      margin: auto;
+      width: min(1160px, 90%);
+      margin: 0 auto;
+    }
+
+    .mono {
+      color: var(--cyan);
+      font-family: "DM Mono", monospace;
+    }
+
+    .gradient-text {
+      background: linear-gradient(110deg, var(--primary-light), var(--cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .section {
+      padding: 110px 0;
+    }
+
+    .section-heading {
+      max-width: 700px;
+      margin-bottom: 48px;
+    }
+
+    .section-label {
+      margin-bottom: 12px;
+      color: var(--cyan);
+      font-family: "DM Mono", monospace;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin-bottom: 16px;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+    }
+
+    .section-description {
+      color: var(--muted);
+      font-size: 1.05rem;
     }
 
     /* Navigation */
+
     .navbar {
-      position: sticky;
-      top: 0;
+      position: fixed;
       z-index: 1000;
-      border-bottom: 1px solid var(--border);
-      background: var(--surface);
+      top: 0;
+      right: 0;
+      left: 0;
+      border-bottom: 1px solid transparent;
+      background: rgba(8, 11, 20, 0.7);
+      backdrop-filter: blur(18px);
+      transition: border 0.3s ease, background 0.3s ease;
+    }
+
+    body.light-mode .navbar {
+      background: rgba(248, 250, 252, 0.78);
+    }
+
+    .navbar.scrolled {
+      border-bottom-color: var(--border);
     }
 
     .nav-container {
-      min-height: 70px;
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -84,343 +186,700 @@
       place-items: center;
       width: 44px;
       height: 44px;
-      border-radius: 12px;
-      background: var(--primary-dark);
+      border: 1px solid rgba(167, 139, 250, 0.4);
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), #4f46e5);
       color: white;
-      font-weight: bold;
-      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: -0.06em;
     }
 
     .nav-right {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 18px;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 26px;
       list-style: none;
     }
 
     .nav-links a {
-      color: var(--text);
+      color: var(--muted-light);
+      font-size: 0.9rem;
       font-weight: 600;
-      text-decoration: none;
+      transition: color 0.2s ease;
     }
 
     .nav-links a:hover {
-      color: var(--primary-dark);
+      color: var(--cyan);
     }
 
     .theme-toggle,
     .menu-toggle {
       border: 1px solid var(--border);
-      border-radius: 8px;
-      background: var(--surface);
+      border-radius: 10px;
+      background: transparent;
       color: var(--text);
       cursor: pointer;
-      font-size: 1.1rem;
-      padding: 8px 11px;
+      font-size: 1rem;
+      padding: 9px 11px;
     }
 
     .menu-toggle {
       display: none;
     }
 
-    button:focus,
-    a:focus {
-      outline: 3px solid var(--primary);
-      outline-offset: 3px;
-    }
-
     /* Hero */
+
     .hero {
-      min-height: 90vh;
-      display: grid;
-      place-items: center;
-      background:
-        radial-gradient(circle at top right, #dbeafe, transparent 35%),
-        radial-gradient(circle at bottom left, #ede9fe, transparent 35%),
-        var(--background);
-    }
-
-    body.dark-mode .hero {
-      background:
-        radial-gradient(circle at top right, #312e81, transparent 35%),
-        radial-gradient(circle at bottom left, #1e3a8a, transparent 35%),
-        var(--background);
-    }
-
-    .hero-content {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      min-height: 100vh;
+      display: flex;
       align-items: center;
-      gap: 60px;
-      padding: 80px 0;
+      padding: 150px 0 100px;
     }
 
-    .eyebrow {
-      margin-bottom: 12px;
-      color: var(--primary-dark);
-      font-size: 0.85rem;
-      font-weight: bold;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      align-items: center;
+      gap: 80px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 25px;
+      border: 1px solid rgba(52, 211, 153, 0.25);
+      border-radius: 999px;
+      background: rgba(52, 211, 153, 0.08);
+      color: var(--green);
+      padding: 8px 13px;
+      font-family: "DM Mono", monospace;
+      font-size: 0.78rem;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 14px var(--green);
     }
 
     .hero h1 {
-      margin-bottom: 16px;
-      font-size: clamp(3rem, 8vw, 5.8rem);
-      line-height: 1;
+      max-width: 850px;
+      margin-bottom: 24px;
+      font-size: clamp(3rem, 8vw, 6.7rem);
+      letter-spacing: -0.07em;
+      line-height: 0.98;
     }
 
-    .hero h2 {
-      max-width: 650px;
-      margin-bottom: 20px;
-      font-size: clamp(1.5rem, 3vw, 2.4rem);
-      line-height: 1.2;
-    }
-
-    .hero h2 span {
-      color: var(--primary-dark);
+    .hero-subtitle {
+      max-width: 700px;
+      margin-bottom: 25px;
+      color: var(--muted-light);
+      font-size: clamp(1.25rem, 3vw, 1.8rem);
+      line-height: 1.3;
     }
 
     .hero-description {
-      max-width: 600px;
-      margin-bottom: 28px;
+      max-width: 680px;
+      margin-bottom: 34px;
       color: var(--muted);
-      font-size: 1.08rem;
+      font-size: 1.05rem;
     }
 
-    .hero-buttons {
+    .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
     }
 
     .button {
-      display: inline-block;
-      border-radius: 10px;
-      padding: 13px 20px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: transform 0.2s ease, background 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      padding: 13px 19px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      transition: transform 0.25s ease, border 0.25s ease, background 0.25s ease;
     }
 
     .button:hover {
       transform: translateY(-3px);
     }
 
-    .primary-button {
-      background: var(--primary-dark);
+    .button-primary {
+      background: linear-gradient(110deg, var(--primary), #4f46e5);
       color: white;
+      box-shadow: 0 12px 30px rgba(99, 102, 241, 0.25);
     }
 
-    .primary-button:hover {
-      background: var(--primary);
-    }
-
-    .secondary-button {
-      border: 1px solid var(--border);
-      background: var(--surface);
+    .button-secondary {
+      border-color: var(--border);
+      background: var(--card);
       color: var(--text);
     }
 
-    .hero-image {
+    .hero-visual {
+      position: relative;
       display: flex;
       justify-content: center;
     }
 
-    .hero-image img {
-      width: min(340px, 80vw);
-      aspect-ratio: 1;
-      border: 10px solid var(--surface);
+    .profile-wrapper {
+      position: relative;
+      width: min(340px, 75vw);
+      height: min(340px, 75vw);
+    }
+
+    .profile-wrapper::before {
+      position: absolute;
+      inset: -18px;
+      border: 1px solid rgba(139, 92, 246, 0.35);
+      border-radius: 50%;
+      content: "";
+      animation: spin 22s linear infinite;
+    }
+
+    .profile-wrapper::after {
+      position: absolute;
+      top: 3%;
+      right: 4%;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 25px var(--cyan);
+      content: "";
+    }
+
+    .profile-image {
+      width: 100%;
+      height: 100%;
+      border: 8px solid var(--card-solid);
       border-radius: 50%;
       object-fit: cover;
       box-shadow: var(--shadow);
     }
 
-    /* Sections */
-    section {
-      padding: 85px 0;
+    .code-card {
+      position: absolute;
+      right: -45px;
+      bottom: -25px;
+      width: 240px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: rgba(17, 24, 39, 0.9);
+      padding: 17px;
+      box-shadow: var(--shadow);
+      color: #c4b5fd;
+      font-family: "DM Mono", monospace;
+      font-size: 0.72rem;
     }
 
-    .section-title {
-      margin-bottom: 12px;
-      text-align: center;
-      font-size: 2.2rem;
+    body.light-mode .code-card {
+      background: rgba(255, 255, 255, 0.94);
     }
 
-    .section-subtitle {
-      max-width: 650px;
-      margin: 0 auto 40px;
+    .code-card span {
+      color: var(--cyan);
+    }
+
+    /* About */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .glass-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--card);
+      padding: 30px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .glass-card p {
       color: var(--muted);
-      text-align: center;
     }
 
-    .about-content {
-      max-width: 800px;
-      margin: auto;
-      color: var(--muted);
-      font-size: 1.05rem;
-      text-align: center;
+    .about-list {
+      display: grid;
+      gap: 15px;
+      list-style: none;
+    }
+
+    .about-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: var(--muted-light);
+    }
+
+    .about-list strong {
+      display: block;
+      color: var(--text);
+    }
+
+    .about-icon {
+      color: var(--cyan);
+      font-size: 1.2rem;
     }
 
     /* Skills */
+
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .skill-card,
-    .project-card,
-    .education-card {
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      background: var(--surface);
-      box-shadow: var(--shadow);
+      gap: 15px;
     }
 
     .skill-card {
-      padding: 22px 16px;
-      text-align: center;
-      transition: transform 0.2s ease;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--card);
+      padding: 22px;
+      transition: transform 0.25s ease, border 0.25s ease;
     }
 
-    .skill-card:hover,
-    .project-card:hover {
+    .skill-card:hover {
+      border-color: rgba(139, 92, 246, 0.55);
       transform: translateY(-5px);
     }
 
-    .skill-icon {
-      display: block;
-      margin-bottom: 10px;
-      font-size: 2rem;
-    }
-
     .skill-card h3 {
-      margin-bottom: 8px;
+      margin-bottom: 12px;
       font-size: 1rem;
     }
 
     .skill-card p {
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
+    }
+
+    .skill-icon {
+      display: block;
+      margin-bottom: 13px;
+      color: var(--cyan);
+      font-size: 1.6rem;
     }
 
     /* Projects */
-    .projects {
+
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .filter-button {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted-light);
+      cursor: pointer;
+      padding: 9px 15px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .filter-button.active,
+    .filter-button:hover {
+      border-color: var(--primary);
+      background: rgba(139, 92, 246, 0.15);
+      color: var(--primary-light);
+    }
+
+    .projects-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+      gap: 20px;
     }
 
     .project-card {
       display: flex;
       flex-direction: column;
-      padding: 24px;
-      transition: transform 0.2s ease;
+      min-height: 360px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--card);
+      padding: 26px;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease, border 0.25s ease;
+    }
+
+    .project-card:hover {
+      border-color: rgba(139, 92, 246, 0.6);
+      transform: translateY(-7px);
+    }
+
+    .project-card.hidden {
+      display: none;
+    }
+
+    .project-number {
+      margin-bottom: 25px;
+      color: var(--cyan);
+      font-family: "DM Mono", monospace;
+      font-size: 0.85rem;
     }
 
     .project-card h3 {
-      margin-bottom: 12px;
-      color: var(--primary-dark);
-      font-size: 1.2rem;
+      margin-bottom: 13px;
+      font-size: 1.35rem;
     }
 
     .project-card p {
       flex-grow: 1;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
       color: var(--muted);
+      font-size: 0.94rem;
     }
 
-    .technology-list {
+    .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 20px;
+      gap: 7px;
+      margin-bottom: 22px;
       list-style: none;
     }
 
-    .technology-list li {
-      border-radius: 20px;
-      background: var(--surface-secondary);
-      color: var(--primary-dark);
-      padding: 5px 10px;
-      font-size: 0.78rem;
-      font-weight: bold;
+    .tags li {
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      border-radius: 999px;
+      background: rgba(139, 92, 246, 0.1);
+      color: var(--primary-light);
+      padding: 5px 9px;
+      font-family: "DM Mono", monospace;
+      font-size: 0.7rem;
     }
 
     .project-link {
-      color: var(--primary-dark);
-      font-weight: bold;
-      text-decoration: none;
+      color: var(--cyan);
+      font-size: 0.9rem;
+      font-weight: 700;
     }
 
-    /* Education */
-    .education-card {
-      max-width: 750px;
-      margin: auto;
-      padding: 30px;
-      text-align: center;
+    /* Experience */
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 25px;
+      margin-left: 15px;
+      padding-left: 30px;
     }
 
-    .education-card h3 {
-      margin-bottom: 8px;
+    .timeline::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 1px;
+      background: linear-gradient(var(--primary), var(--cyan));
+      content: "";
     }
 
-    .education-card p {
+    .timeline-item {
+      position: relative;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--card);
+      padding: 25px;
+    }
+
+    .timeline-item::before {
+      position: absolute;
+      top: 28px;
+      left: -36px;
+      width: 11px;
+      height: 11px;
+      border: 3px solid var(--bg);
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 14px var(--cyan);
+      content: "";
+    }
+
+    .timeline-date {
+      margin-bottom: 7px;
+      color: var(--cyan);
+      font-family: "DM Mono", monospace;
+      font-size: 0.8rem;
+    }
+
+    .timeline-item h3 {
+      margin-bottom: 4px;
+      font-size: 1.2rem;
+    }
+
+    .timeline-role {
+      margin-bottom: 12px;
+      color: var(--primary-light);
+      font-weight: 600;
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+    }
+
+    /* Security section */
+
+    .security-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 25px;
+      align-items: stretch;
+    }
+
+    .security-list {
+      display: grid;
+      gap: 13px;
+      margin-top: 20px;
+      list-style: none;
+    }
+
+    .security-list li {
+      display: flex;
+      gap: 10px;
+      color: var(--muted-light);
+    }
+
+    .security-list li::before {
+      color: var(--green);
+      content: "✓";
+      font-weight: 800;
+    }
+
+    .terminal {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #05070d;
+      box-shadow: var(--shadow);
+      font-family: "DM Mono", monospace;
+    }
+
+    .terminal-bar {
+      display: flex;
+      gap: 7px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 14px;
+    }
+
+    .terminal-bar span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ef4444;
+    }
+
+    .terminal-bar span:nth-child(2) {
+      background: #f59e0b;
+    }
+
+    .terminal-bar span:nth-child(3) {
+      background: #22c55e;
+    }
+
+    .terminal-content {
+      min-height: 280px;
+      padding: 25px;
+      color: #a7f3d0;
+      font-size: 0.83rem;
+      line-height: 2;
+    }
+
+    .terminal-content .purple {
+      color: #c4b5fd;
+    }
+
+    .terminal-content .blue {
+      color: #67e8f9;
+    }
+
+    /* Achievements */
+
+    .achievement-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .achievement-card {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--card);
+      padding: 25px;
+    }
+
+    .achievement-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .achievement-card p {
       color: var(--muted);
     }
 
     /* Contact */
+
     .contact-box {
-      max-width: 700px;
-      margin: auto;
-      border-radius: 18px;
-      background: var(--surface-secondary);
-      padding: 32px;
-      text-align: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(34, 211, 238, 0.08)),
+        var(--card);
+      padding: 40px;
+    }
+
+    .contact-box h2 {
+      margin-bottom: 14px;
+      font-size: 2rem;
     }
 
     .contact-box p {
-      margin-bottom: 12px;
       color: var(--muted);
     }
 
-    .contact-box a {
-      color: var(--primary-dark);
-      font-weight: bold;
-      text-decoration: none;
+    .contact-links {
+      display: grid;
+      gap: 12px;
     }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 13px 15px;
+      color: var(--muted-light);
+      font-size: 0.9rem;
+      transition: border 0.2s ease, color 0.2s ease;
+    }
+
+    .contact-link:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    /* Footer */
 
     footer {
       border-top: 1px solid var(--border);
-      background: var(--surface);
+      padding: 30px 0;
       color: var(--muted);
-      padding: 24px;
-      text-align: center;
+      font-size: 0.88rem;
     }
 
-    /* Mobile navigation */
-    @media (max-width: 850px) {
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-note {
+      color: var(--cyan);
+      font-family: "DM Mono", monospace;
+      font-size: 0.78rem;
+    }
+
+    /* Animations */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* Responsive layout */
+
+    @media (max-width: 950px) {
+      .hero-grid,
+      .security-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .code-card {
+        right: 2%;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 760px) {
       .menu-toggle {
         display: block;
       }
 
       .nav-links {
         position: absolute;
-        top: 70px;
-        left: 0;
-        right: 0;
+        top: 76px;
+        right: 5%;
+        left: 5%;
         display: none;
         flex-direction: column;
         gap: 0;
-        border-bottom: 1px solid var(--border);
-        background: var(--surface);
+        overflow: hidden;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: var(--card-solid);
+        box-shadow: var(--shadow);
       }
 
       .nav-links.open {
@@ -428,87 +887,105 @@
       }
 
       .nav-links li {
-        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links li:last-child {
+        border-bottom: none;
       }
 
       .nav-links a {
         display: block;
-        padding: 15px 5%;
+        padding: 14px 18px;
       }
 
-      .hero-content {
+      .hero {
+        padding-top: 130px;
+      }
+
+      .hero h1 {
+        font-size: clamp(3.1rem, 15vw, 5rem);
+      }
+
+      .about-grid,
+      .contact-box,
+      .achievement-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
-        text-align: center;
       }
 
-      .hero-description {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .hero-buttons {
-        justify-content: center;
-      }
-
-      .hero-image {
-        order: -1;
-      }
-
-      .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .projects {
+      .projects-grid {
         grid-template-columns: 1fr;
+      }
+
+      .contact-box {
+        padding: 28px;
+      }
+
+      .footer-content {
+        align-items: flex-start;
+        flex-direction: column;
       }
     }
 
     @media (max-width: 500px) {
+      .section {
+        padding: 80px 0;
+      }
+
       .skills-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero h1 {
-        font-size: 3rem;
+      .profile-wrapper {
+        width: 250px;
+        height: 250px;
       }
 
-      section {
-        padding: 65px 0;
+      .code-card {
+        right: -10px;
+        bottom: -55px;
+        width: 210px;
+        font-size: 0.65rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
       }
     }
   </style>
 </head>
 
 <body>
-
-  <!-- Navigation -->
-  <nav class="navbar" aria-label="Main navigation">
+  <nav class="navbar" id="navbar" aria-label="Main navigation">
     <div class="container nav-container">
-      <a href="#home" class="logo" aria-label="Go to homepage">MM</a>
+      <a href="#home" class="logo" aria-label="Musfira Mujeeb home">MM</a>
 
       <div class="nav-right">
         <ul class="nav-links" id="nav-links">
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
-          <li><a href="#education">Education</a></li>
+          <li><a href="#experience">Experience</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
 
         <button
-          id="theme-toggle"
           class="theme-toggle"
+          id="theme-toggle"
           type="button"
-          aria-label="Enable dark mode"
-          title="Toggle dark mode"
+          aria-label="Switch to light mode"
+          title="Toggle colour theme"
         >
-          🌙
+          ☀️
         </button>
 
         <button
-          id="menu-toggle"
           class="menu-toggle"
+          id="menu-toggle"
           type="button"
           aria-label="Open navigation menu"
           aria-expanded="false"
@@ -521,149 +998,292 @@
   </nav>
 
   <main>
-
-    <!-- Hero Section -->
     <header class="hero" id="home">
-      <div class="container hero-content">
-        <div>
-          <p class="eyebrow">Hello, I am</p>
+      <div class="container hero-grid">
+        <div class="reveal">
+          <div class="status">
+            <span class="status-dot"></span>
+            Open to software development and IT opportunities
+          </div>
 
-          <h1>Mushfira Mujeeb</h1>
+          <h1>
+            Building secure digital products
+            <span class="gradient-text">from frontend to backend.</span>
+          </h1>
 
-          <h2>
-            Information Systems Undergraduate
-            <span>building meaningful digital experiences.</span>
-          </h2>
-
-          <p class="hero-description">
-            I am passionate about web development, cybersecurity, databases,
-            and using technology to solve real-world problems.
+          <p class="hero-subtitle">
+            I’m <strong>Musfira Mujeeb</strong> — a Full-Stack Developer
+            and Application Security Enthusiast.
           </p>
 
-          <div class="hero-buttons">
-            <a href="#projects" class="button primary-button">
-              View My Projects
+          <p class="hero-description">
+            I build modern web applications using React, TypeScript,
+            Node.js, Express.js, MongoDB, Firebase, and secure API practices.
+            My goal is to create products that are useful, scalable, and
+            security-conscious from the beginning.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="button button-primary">
+              Explore my work →
             </a>
 
-            <a href="cv.pdf" class="button secondary-button" download>
+            <a href="cv.pdf" class="button button-secondary" download>
               Download CV
+            </a>
+
+            <a href="#contact" class="button button-secondary">
+              Contact me
             </a>
           </div>
         </div>
 
-        <div class="hero-image">
-          <img
-            src="profile.jpeg"
-            alt="Portrait of Mushfira Mujeeb"
-          >
+        <div class="hero-visual reveal">
+          <div class="profile-wrapper">
+            <img
+              class="profile-image"
+              src="profile.jpeg"
+              alt="Portrait of Musfira Mujeeb"
+            >
+
+            <div class="code-card">
+              <span>const</span> focus = [<br>
+              &nbsp;&nbsp;"full-stack",<br>
+              &nbsp;&nbsp;"security",<br>
+              &nbsp;&nbsp;"impact"<br>
+              ];
+            </div>
+          </div>
         </div>
       </div>
     </header>
 
-    <!-- About Section -->
-    <section id="about">
+    <section class="section" id="about">
       <div class="container">
-        <h2 class="section-title">About Me</h2>
-
-        <p class="section-subtitle">
-          Learn more about my background and interests.
-        </p>
-
-        <div class="about-content">
-          <p>
-            Hello! I am a second-year undergraduate student studying
-            BSc (Hons) Information Systems at Sabaragamuwa University of
-            Sri Lanka. I am passionate about learning IT skills, web
-            development, cybersecurity, databases, and programming.
+        <div class="section-heading reveal">
+          <p class="section-label">01 / About</p>
+          <h2 class="section-title">
+            Engineering with curiosity and purpose.
+          </h2>
+          <p class="section-description">
+            I enjoy understanding how systems work, building useful products,
+            and improving the security and reliability of the applications I create.
           </p>
         </div>
-      </div>
-    </section>
 
-    <!-- Skills Section -->
-    <section id="skills">
-      <div class="container">
-        <h2 class="section-title">My Skills</h2>
+        <div class="about-grid">
+          <article class="glass-card reveal">
+            <p>
+              I am an Information Systems undergraduate at Sabaragamuwa
+              University of Sri Lanka with practical experience in frontend
+              development, backend engineering, secure API processing, and
+              real-time application features.
+            </p>
 
-        <p class="section-subtitle">
-          Technologies and areas I am currently learning.
-        </p>
+            <br>
 
-        <div class="skills-grid">
-          <article class="skill-card">
-            <span class="skill-icon">🌐</span>
-            <h3>Web Development</h3>
-            <p>HTML, CSS, responsive layouts, and user-friendly interfaces.</p>
+            <p>
+              My strongest interest is at the intersection of full-stack
+              development and application security. I want to build software
+              that is not only visually polished, but also thoughtfully
+              structured and protected against common risks.
+            </p>
           </article>
 
-          <article class="skill-card">
-            <span class="skill-icon">💻</span>
-            <h3>Java Programming</h3>
-            <p>Object-oriented programming and console applications.</p>
-          </article>
+          <article class="glass-card reveal">
+            <ul class="about-list">
+              <li>
+                <span class="about-icon">▹</span>
+                <span>
+                  <strong>Full-stack development</strong>
+                  React, Next.js, Node.js, Express.js, and REST APIs.
+                </span>
+              </li>
 
-          <article class="skill-card">
-            <span class="skill-icon">🗄️</span>
-            <h3>Databases</h3>
-            <p>Database concepts, data organization, and SQL fundamentals.</p>
-          </article>
+              <li>
+                <span class="about-icon">▹</span>
+                <span>
+                  <strong>Security-conscious engineering</strong>
+                  JWT, Helmet, CORS, rate limiting, and sanitization.
+                </span>
+              </li>
 
-          <article class="skill-card">
-            <span class="skill-icon">🔐</span>
-            <h3>Cybersecurity</h3>
-            <p>Learning security principles, privacy, and safe systems.</p>
-          </article>
-
-          <article class="skill-card">
-            <span class="skill-icon">🤖</span>
-            <h3>Machine Learning</h3>
-            <p>Basic exposure through a diabetes prediction project.</p>
-          </article>
-
-          <article class="skill-card">
-            <span class="skill-icon">📱</span>
-            <h3>Responsive Design</h3>
-            <p>Creating pages for mobile, tablet, and desktop devices.</p>
-          </article>
-
-          <article class="skill-card">
-            <span class="skill-icon">🐙</span>
-            <h3>GitHub</h3>
-            <p>Managing and sharing projects using GitHub repositories.</p>
-          </article>
-
-          <article class="skill-card">
-            <span class="skill-icon">🧠</span>
-            <h3>Problem Solving</h3>
-            <p>Breaking down problems and designing practical solutions.</p>
+              <li>
+                <span class="about-icon">▹</span>
+                <span>
+                  <strong>Continuous learning</strong>
+                  Currently developing practical web application penetration
+                  testing skills.
+                </span>
+              </li>
+            </ul>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
+    <section class="section" id="skills">
       <div class="container">
-        <h2 class="section-title">Featured Projects</h2>
+        <div class="section-heading reveal">
+          <p class="section-label">02 / Toolkit</p>
+          <h2 class="section-title">Technologies I work with.</h2>
+          <p class="section-description">
+            A growing technical toolkit built through academic work,
+            capstone development, internships, and independent learning.
+          </p>
+        </div>
 
-        <p class="section-subtitle">
-          Projects I have worked on during my learning journey.
-        </p>
+        <div class="skills-grid">
+          <article class="skill-card reveal">
+            <span class="skill-icon">⌘</span>
+            <h3>Frontend</h3>
+            <p>React, Next.js, TypeScript, JavaScript, HTML, CSS, Tailwind CSS, Vite.</p>
+          </article>
 
-        <div class="projects">
+          <article class="skill-card reveal">
+            <span class="skill-icon">⌁</span>
+            <h3>Backend</h3>
+            <p>Node.js, Express.js, REST APIs, Firebase Admin SDK, Socket.IO.</p>
+          </article>
 
-          <article class="project-card">
-            <h3>Diabetes Prediction Website</h3>
+          <article class="skill-card reveal">
+            <span class="skill-icon">◫</span>
+            <h3>Databases</h3>
+            <p>MongoDB, Mongoose, MySQL, structured data modelling, and API data flows.</p>
+          </article>
+
+          <article class="skill-card reveal">
+            <span class="skill-icon">◈</span>
+            <h3>Application Security</h3>
+            <p>JWT, CORS, Helmet, rate limiting, sanitization, HTTPS, and secure uploads.</p>
+          </article>
+
+          <article class="skill-card reveal">
+            <span class="skill-icon">◉</span>
+            <h3>Cloud & Services</h3>
+            <p>Firebase, Cloudinary, authentication services, and deployment workflows.</p>
+          </article>
+
+          <article class="skill-card reveal">
+            <span class="skill-icon">⌘</span>
+            <h3>Tools</h3>
+            <p>Git, GitHub, VS Code, Android Studio, Vite, and collaborative workflows.</p>
+          </article>
+
+          <article class="skill-card reveal">
+            <span class="skill-icon">⚡</span>
+            <h3>Real-Time Systems</h3>
+            <p>Socket.IO messaging, notifications, and collaborative application features.</p>
+          </article>
+
+          <article class="skill-card reveal">
+            <span class="skill-icon">⌕</span>
+            <h3>Security Learning</h3>
+            <p>Reconnaissance, vulnerability testing, Burp Suite, and security reporting.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="section-label">03 / Selected work</p>
+          <h2 class="section-title">Projects with real-world direction.</h2>
+          <p class="section-description">
+            These projects best represent my current interests in full-stack
+            engineering, application security, and practical technology.
+          </p>
+        </div>
+
+        <div class="filter-buttons reveal" aria-label="Filter projects">
+          <button class="filter-button active" data-filter="all">All</button>
+          <button class="filter-button" data-filter="fullstack">Full-stack</button>
+          <button class="filter-button" data-filter="security">Security</button>
+          <button class="filter-button" data-filter="web">Web development</button>
+          <button class="filter-button" data-filter="machine-learning">Machine learning</button>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card reveal" data-category="fullstack">
+            <p class="project-number">01 / CAPSTONE PROJECT</p>
+
+            <h3>LankaServe</h3>
 
             <p>
-              A machine-learning-based website created during a hackathon
-              to predict diabetes risk.
+              A multi-application service marketplace platform with
+              customer-facing and provider-facing experiences. I worked
+              across frontend and backend development while helping build
+              secure authentication, API processing, file uploads, and
+              real-time communication.
             </p>
 
-            <ul class="technology-list">
-              <li>Machine Learning</li>
-              <li>Web Development</li>
-              <li>Hackathon</li>
+            <ul class="tags">
+              <li>React</li>
+              <li>TypeScript</li>
+              <li>Node.js</li>
+              <li>MongoDB</li>
+              <li>Firebase</li>
+              <li>Socket.IO</li>
+            </ul>
+
+            <a
+              class="project-link"
+              href="https://github.com/MusfiraMujeeb"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View related work on GitHub ↗
+            </a>
+          </article>
+
+          <article class="project-card reveal" data-category="web">
+            <p class="project-number">02 / PROFESSIONAL WORK</p>
+
+            <h3>Laser Tech.lk</h3>
+
+            <p>
+              Designed and developed the company's first website, establishing
+              its initial online presence. The work focused on responsive,
+              accessible interfaces, business requirements, deployment,
+              troubleshooting, and continuous improvement.
+            </p>
+
+            <ul class="tags">
+              <li>Web development</li>
+              <li>Responsive design</li>
+              <li>Accessibility</li>
+              <li>Git</li>
+              <li>Deployment</li>
+            </ul>
+
+            <a
+              class="project-link"
+              href="https://github.com/MusfiraMujeeb"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View related work on GitHub ↗
+            </a>
+          </article>
+
+          <article class="project-card reveal" data-category="machine-learning">
+            <p class="project-number">03 / COMPETITION PROJECT</p>
+
+            <h3>DiaSaver</h3>
+
+            <p>
+              An AI-powered diabetes risk assessment application created for
+              IDEALIZE 2025. The project combined a web-based interface with
+              machine-learning concepts to address a practical healthcare
+              technology problem.
+            </p>
+
+            <ul class="tags">
+              <li>Machine learning</li>
+              <li>Healthcare technology</li>
+              <li>Web application</li>
+              <li>Team project</li>
             </ul>
 
             <a
@@ -672,192 +1292,362 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              View on GitHub →
+              View project on GitHub ↗
             </a>
           </article>
 
-          <article class="project-card">
-            <h3>Maker's Magic Website</h3>
+          <article class="project-card reveal" data-category="security">
+            <p class="project-number">04 / SECURITY FOCUS</p>
+
+            <h3>Application Security Practice</h3>
 
             <p>
-              A sample online store website created as part of a university
-              assignment.
+              A growing security-focused practice covering secure API design,
+              JWT authentication, rate limiting, CORS configuration, Helmet,
+              MongoDB sanitization, secure file-upload validation, and
+              web application penetration testing fundamentals.
             </p>
 
-            <ul class="technology-list">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>Web Design</li>
+            <ul class="tags">
+              <li>JWT</li>
+              <li>Burp Suite</li>
+              <li>API security</li>
+              <li>WAPT</li>
+              <li>Security testing</li>
             </ul>
 
-            <a
-              class="project-link"
-              href="https://github.com/MushfiraMujeeb/Maker-s-Magic"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View on GitHub →
+            <a href="#security" class="project-link">
+              Explore my security focus ↓
             </a>
           </article>
+        </div>
+      </div>
+    </section>
 
-          <article class="project-card">
-            <h3>Movie Ticket Booking System</h3>
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="section-label">04 / Experience</p>
+          <h2 class="section-title">Learning through real responsibilities.</h2>
+          <p class="section-description">
+            Experience gained through professional work, academic projects,
+            and focused security training.
+          </p>
+        </div>
 
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <p class="timeline-date">JAN 2026 — PRESENT</p>
+            <h3>Web Development & Digital Support</h3>
+            <p class="timeline-role">Laser Tech.lk</p>
             <p>
-              A Java console application for browsing movies, selecting
-              showtimes, and booking tickets.
+              Developed and deployed the company's first website, created
+              responsive interfaces, resolved issues, delivered improvements,
+              and used Git throughout development and maintenance.
             </p>
-
-            <ul class="technology-list">
-              <li>Java</li>
-              <li>Programming</li>
-              <li>Console Application</li>
-            </ul>
-
-            <a
-              class="project-link"
-              href="https://github.com/MushfiraMujeeb/java-practice"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View on GitHub →
-            </a>
           </article>
 
+          <article class="timeline-item reveal">
+            <p class="timeline-date">NOV 2025 — JUN 2026</p>
+            <h3>Web Application Developer</h3>
+            <p class="timeline-role">LankaServe — Capstone Project</p>
+            <p>
+              Built React and TypeScript interfaces, developed Node.js and
+              Express.js backend services, integrated Firebase authentication,
+              implemented secure APIs, and contributed to Socket.IO messaging
+              and notification features.
+            </p>
+          </article>
+
+          <article class="timeline-item reveal">
+            <p class="timeline-date">SEP 2026 — OCT 2026</p>
+            <h3>Web Application Penetration Testing Intern</h3>
+            <p class="timeline-role">IqraSec Academy — Currently undertaking</p>
+            <p>
+              Developing practical experience in reconnaissance, vulnerability
+              testing, Burp Suite, web security fundamentals, and security
+              reporting through the WAPT internship track.
+            </p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- Education Section -->
-    <section id="education">
+    <section class="section" id="security">
       <div class="container">
-        <h2 class="section-title">Education</h2>
-
-        <div class="education-card">
-          <h3>BSc (Hons) Information Systems</h3>
-          <p>Sabaragamuwa University of Sri Lanka</p>
-          <p>Currently studying</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-      <div class="container">
-        <h2 class="section-title">Contact Me</h2>
-
-        <p class="section-subtitle">
-          Feel free to connect with me.
-        </p>
-
-        <div class="contact-box">
-          <p>
-            Email:
-            <a href="mailto:mushfiramujeeb22@gmail.com">
-              mushfiramujeeb22@gmail.com
-            </a>
+        <div class="section-heading reveal">
+          <p class="section-label">05 / Security mindset</p>
+          <h2 class="section-title">Security should be considered early.</h2>
+          <p class="section-description">
+            My security focus complements my full-stack development work.
+            I aim to understand how applications can fail and how they can
+            be designed more responsibly.
           </p>
+        </div>
 
-          <p>
-            GitHub:
+        <div class="security-grid">
+          <article class="glass-card reveal">
+            <h3>Security-aware development</h3>
+
+            <ul class="security-list">
+              <li>JWT authentication and authorization</li>
+              <li>Helmet security headers</li>
+              <li>CORS configuration</li>
+              <li>Rate limiting</li>
+              <li>MongoDB sanitization</li>
+              <li>MIME-type upload validation</li>
+              <li>Reconnaissance and vulnerability testing</li>
+              <li>Security reporting fundamentals</li>
+            </ul>
+          </article>
+
+          <div class="terminal reveal" aria-label="Security-themed code illustration">
+            <div class="terminal-bar">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <div class="terminal-content">
+              <span class="purple">$</span> inspect application<br>
+              <span class="blue">[INFO]</span> checking authentication...<br>
+              <span class="blue">[INFO]</span> checking request limits...<br>
+              <span class="blue">[INFO]</span> checking input handling...<br>
+              <span class="blue">[INFO]</span> checking upload validation...<br>
+              <span class="purple">[OK]</span> security mindset enabled<br>
+              <span class="purple">$</span> build responsibly
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="achievements">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="section-label">06 / Beyond the code</p>
+          <h2 class="section-title">Competitions and leadership.</h2>
+        </div>
+
+        <div class="achievement-grid">
+          <article class="achievement-card reveal">
+            <h3>CodeRally 6.0</h3>
+            <p>
+              Participated in the Intermediate Tier with Team Code_Raiders,
+              organised by the IEEE Computer Society Student Branch Chapter
+              of IIT.
+            </p>
+          </article>
+
+          <article class="achievement-card reveal">
+            <h3>IDEALIZE 2025</h3>
+            <p>
+              Contributed to DiaSaver as part of Team Web Wizards in an
+              innovation-focused competition organised by AIESEC University
+              of Moratuwa.
+            </p>
+          </article>
+
+          <article class="achievement-card reveal">
+            <h3>Leadership and community</h3>
+            <p>
+              Designer at the Leo Club, Event Coordinator at Rotaract, and
+              Student Member of the Society of Computer Sciences at
+              Sabaragamuwa University.
+            </p>
+          </article>
+
+          <article class="achievement-card reveal">
+            <h3>Education</h3>
+            <p>
+              BSc (Hons) in Information Systems at Sabaragamuwa University
+              of Sri Lanka, 2024–2028.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-box reveal">
+          <div>
+            <p class="section-label">07 / Contact</p>
+            <h2>Let’s build something useful.</h2>
+            <p>
+              I am interested in software development, full-stack engineering,
+              IT, and application security opportunities.
+            </p>
+          </div>
+
+          <div class="contact-links">
             <a
-              href="https://github.com/MushfiraMujeeb"
+              class="contact-link"
+              href="mailto:mushfiramujeeb22@gmail.com"
+            >
+              <span>Email</span>
+              <span>↗</span>
+            </a>
+
+            <a
+              class="contact-link"
+              href="https://www.linkedin.com/in/mushfira-mujeeb"
               target="_blank"
               rel="noopener noreferrer"
             >
-              github.com/MushfiraMujeeb
+              <span>LinkedIn</span>
+              <span>↗</span>
             </a>
-          </p>
 
-          <p>
-            LinkedIn:
             <a
-              href="https://www.linkedin.com/in/mushfira-mujeeb-430453307"
+              class="contact-link"
+              href="https://github.com/MusfiraMujeeb"
               target="_blank"
               rel="noopener noreferrer"
             >
-              LinkedIn Profile
+              <span>GitHub</span>
+              <span>↗</span>
             </a>
-          </p>
+
+            <!-- Replace YOUR_MEDIUM_USERNAME with your real Medium username -->
+            <a
+              class="contact-link"
+              href="https://medium.com/@YOUR_MEDIUM_USERNAME"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>Medium</span>
+              <span>↗</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
-
   </main>
 
   <footer>
-    <p>© 2026 Mushfira Mujeeb. All rights reserved.</p>
+    <div class="container footer-content">
+      <p>
+        © 2026 Musfira Mujeeb. Built with intention and curiosity.
+      </p>
+
+      <p class="footer-note">
+        Secure by design · Always learning
+      </p>
+    </div>
   </footer>
 
   <script>
     const body = document.body;
+    const navbar = document.getElementById("navbar");
     const themeToggle = document.getElementById("theme-toggle");
     const menuToggle = document.getElementById("menu-toggle");
     const navLinks = document.getElementById("nav-links");
+    const filterButtons = document.querySelectorAll(".filter-button");
+    const projectCards = document.querySelectorAll(".project-card");
 
-    // Load saved theme
-    const savedTheme = localStorage.getItem("portfolio-theme");
+    // Theme preference
+    const savedTheme = localStorage.getItem("musfira-theme");
 
     if (
-      savedTheme === "dark" ||
+      savedTheme === "light" ||
       (
         savedTheme === null &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches
+        !window.matchMedia("(prefers-color-scheme: dark)").matches
       )
     ) {
-      body.classList.add("dark-mode");
+      body.classList.add("light-mode");
     }
 
     function updateThemeButton() {
-      const darkMode = body.classList.contains("dark-mode");
+      const lightMode = body.classList.contains("light-mode");
 
-      themeToggle.textContent = darkMode ? "☀️" : "🌙";
+      themeToggle.textContent = lightMode ? "🌙" : "☀️";
       themeToggle.setAttribute(
         "aria-label",
-        darkMode ? "Enable light mode" : "Enable dark mode"
-      );
-      themeToggle.setAttribute(
-        "title",
-        darkMode ? "Switch to light mode" : "Switch to dark mode"
+        lightMode ? "Switch to dark mode" : "Switch to light mode"
       );
     }
 
     updateThemeButton();
 
-    // Dark mode
     themeToggle.addEventListener("click", () => {
-      body.classList.toggle("dark-mode");
+      body.classList.toggle("light-mode");
 
-      const selectedTheme = body.classList.contains("dark-mode")
-        ? "dark"
-        : "light";
+      localStorage.setItem(
+        "musfira-theme",
+        body.classList.contains("light-mode") ? "light" : "dark"
+      );
 
-      localStorage.setItem("portfolio-theme", selectedTheme);
       updateThemeButton();
     });
 
-    // Mobile navigation
+    // Mobile menu
     menuToggle.addEventListener("click", () => {
-      const menuIsOpen = navLinks.classList.toggle("open");
+      const isOpen = navLinks.classList.toggle("open");
 
-      menuToggle.setAttribute("aria-expanded", menuIsOpen);
+      menuToggle.textContent = isOpen ? "✕" : "☰";
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
       menuToggle.setAttribute(
         "aria-label",
-        menuIsOpen ? "Close navigation menu" : "Open navigation menu"
+        isOpen ? "Close navigation menu" : "Open navigation menu"
       );
-      menuToggle.textContent = menuIsOpen ? "✕" : "☰";
     });
 
-    // Close mobile menu after selecting a link
     document.querySelectorAll(".nav-links a").forEach((link) => {
       link.addEventListener("click", () => {
         navLinks.classList.remove("open");
+        menuToggle.textContent = "☰";
         menuToggle.setAttribute("aria-expanded", "false");
         menuToggle.setAttribute("aria-label", "Open navigation menu");
-        menuToggle.textContent = "☰";
       });
     });
-  </script>
 
+    // Navbar background after scrolling
+    window.addEventListener("scroll", () => {
+      navbar.classList.toggle("scrolled", window.scrollY > 25);
+    });
+
+    // Project filtering
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.filter;
+
+        filterButtons.forEach((item) => {
+          item.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        projectCards.forEach((card) => {
+          const category = card.dataset.category;
+          const shouldShow = filter === "all" || category === filter;
+
+          card.classList.toggle("hidden", !shouldShow);
+        });
+      });
+    });
+
+    // Scroll reveal animation
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12
+      }
+    );
+
+    revealElements.forEach((element) => {
+      revealObserver.observe(element);
+    });
+  </script>
 </body>
 </html>
