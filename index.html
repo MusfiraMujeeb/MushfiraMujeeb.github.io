@@ -1,195 +1,863 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mushfira Mujeeb | Portfolio</title>
+
+  <title>Musfira Mujeeb | Portfolio</title>
+
+  <meta
+    name="description"
+    content="Musfira Mujeeb's portfolio featuring projects, skills, education, and interests in information systems, web development, cybersecurity, and databases."
+  >
+
   <style>
-    /* Global styles */
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    :root {
+      --background: #f8fafc;
+      --surface: #ffffff;
+      --surface-secondary: #eef2ff;
+      --text: #172033;
+      --muted: #64748b;
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --border: #e2e8f0;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    body.dark-mode {
+      --background: #0f172a;
+      --surface: #1e293b;
+      --surface-secondary: #312e81;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --primary: #a5b4fc;
+      --primary-dark: #818cf8;
+      --border: #334155;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background-color: #fafafa;
-      color: #333;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--background);
+      color: var(--text);
       line-height: 1.6;
-      cursor: none; /* hide default cursor */
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
-    /* Header with pastel gradient */
-    header {
-      background: linear-gradient(135deg, #f6d6d6, #d6e5fa, #d6f6eb);
-      color: #333;
-      text-align: center;
-      padding: 60px 20px;
-      position: relative;
-      overflow: hidden;
+    a {
+      color: inherit;
     }
 
-    header h1 {
-      font-size: 2.8em;
-      margin: 10px 0 5px;
-    }
-
-    header p {
-      font-size: 1.2em;
-      margin: 0;
-      font-weight: 500;
-    }
-
-    /* Profile picture */
-    .profile-pic {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 5px solid #fff;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      margin-bottom: 15px;
-      transition: transform 0.3s ease;
-    }
-
-    .profile-pic:hover {
-      transform: scale(1.08);
-    }
-
-    /* Section styles */
-    section {
-      padding: 50px 20px;
-      max-width: 900px;
+    .container {
+      width: min(1100px, 90%);
       margin: auto;
     }
 
-    section h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 2em;
-      color: #444;
+    /* Navigation */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
     }
 
-    .projects {
+    .nav-container {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .project-card {
-      background: #fff;
+      place-items: center;
+      width: 44px;
+      height: 44px;
       border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
+      background: var(--primary-dark);
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
     }
 
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-dark);
+    }
+
+    .theme-toggle,
+    .menu-toggle {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 1.1rem;
+      padding: 8px 11px;
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    button:focus,
+    a:focus {
+      outline: 3px solid var(--primary);
+      outline-offset: 3px;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 90vh;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at top right, #dbeafe, transparent 35%),
+        radial-gradient(circle at bottom left, #ede9fe, transparent 35%),
+        var(--background);
+    }
+
+    body.dark-mode .hero {
+      background:
+        radial-gradient(circle at top right, #312e81, transparent 35%),
+        radial-gradient(circle at bottom left, #1e3a8a, transparent 35%),
+        var(--background);
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 60px;
+      padding: 80px 0;
+    }
+
+    .eyebrow {
+      margin-bottom: 12px;
+      color: var(--primary-dark);
+      font-size: 0.85rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin-bottom: 16px;
+      font-size: clamp(3rem, 8vw, 5.8rem);
+      line-height: 1;
+    }
+
+    .hero h2 {
+      max-width: 650px;
+      margin-bottom: 20px;
+      font-size: clamp(1.5rem, 3vw, 2.4rem);
+      line-height: 1.2;
+    }
+
+    .hero h2 span {
+      color: var(--primary-dark);
+    }
+
+    .hero-description {
+      max-width: 600px;
+      margin-bottom: 28px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .button {
+      display: inline-block;
+      border-radius: 10px;
+      padding: 13px 20px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    .primary-button {
+      background: var(--primary-dark);
+      color: white;
+    }
+
+    .primary-button:hover {
+      background: var(--primary);
+    }
+
+    .secondary-button {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+    }
+
+    .hero-image {
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-image img {
+      width: min(340px, 80vw);
+      aspect-ratio: 1;
+      border: 10px solid var(--surface);
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: var(--shadow);
+    }
+
+    /* Sections */
+    section {
+      padding: 85px 0;
+    }
+
+    .section-title {
+      margin-bottom: 12px;
+      text-align: center;
+      font-size: 2.2rem;
+    }
+
+    .section-subtitle {
+      max-width: 650px;
+      margin: 0 auto 40px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .about-content {
+      max-width: 800px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 1.05rem;
+      text-align: center;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .skill-card,
+    .project-card,
+    .education-card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .skill-card {
+      padding: 22px 16px;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .skill-card:hover,
     .project-card:hover {
       transform: translateY(-5px);
     }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #d6e5fa;
-      margin-top: 30px;
+    .skill-icon {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 2rem;
     }
 
-    a {
-      color: #0066cc;
+    .skill-card h3 {
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .skill-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      transition: transform 0.2s ease;
+    }
+
+    .project-card h3 {
+      margin-bottom: 12px;
+      color: var(--primary-dark);
+      font-size: 1.2rem;
+    }
+
+    .project-card p {
+      flex-grow: 1;
+      margin-bottom: 18px;
+      color: var(--muted);
+    }
+
+    .technology-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+      list-style: none;
+    }
+
+    .technology-list li {
+      border-radius: 20px;
+      background: var(--surface-secondary);
+      color: var(--primary-dark);
+      padding: 5px 10px;
+      font-size: 0.78rem;
+      font-weight: bold;
+    }
+
+    .project-link {
+      color: var(--primary-dark);
+      font-weight: bold;
       text-decoration: none;
-      transition: color 0.2s ease;
     }
 
-    a:hover {
-      color: #004999;
+    /* Education */
+    .education-card {
+      max-width: 750px;
+      margin: auto;
+      padding: 30px;
+      text-align: center;
     }
 
-    /* Custom cursor */
-    .cursor {
-      width: 20px;
-      height: 20px;
-      border: 2px solid #333;
-      border-radius: 50%;
-      position: fixed;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      transition: transform 0.15s ease, background-color 0.2s ease;
-      z-index: 9999;
+    .education-card h3 {
+      margin-bottom: 8px;
     }
 
-    .cursor.active {
-      transform: translate(-50%, -50%) scale(1.8);
-      background-color: rgba(0, 0, 0, 0.1);
+    .education-card p {
+      color: var(--muted);
+    }
+
+    /* Contact */
+    .contact-box {
+      max-width: 700px;
+      margin: auto;
+      border-radius: 18px;
+      background: var(--surface-secondary);
+      padding: 32px;
+      text-align: center;
+    }
+
+    .contact-box p {
+      margin-bottom: 12px;
+      color: var(--muted);
+    }
+
+    .contact-box a {
+      color: var(--primary-dark);
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      padding: 24px;
+      text-align: center;
+    }
+
+    /* Mobile navigation */
+    @media (max-width: 850px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        border-bottom: 1px solid var(--border);
+        background: var(--surface);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links li {
+        border-top: 1px solid var(--border);
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 15px 5%;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+      }
+
+      .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero-image {
+        order: -1;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+      }
+
+      section {
+        padding: 65px 0;
+      }
     }
   </style>
 </head>
+
 <body>
 
-  <!-- Custom cursor -->
-  <div class="cursor"></div>
+  <!-- Navigation -->
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="container nav-container">
+      <a href="#home" class="logo" aria-label="Go to homepage">MM</a>
 
-  <!-- Header Section -->
-  <header>
-    <img src="profile.jpeg" alt="Mushfira Mujeeb" class="profile-pic">
-    <h1>Mushfira Mujeeb</h1>
-    <p>BSc (Hons) Information System | Sabaragamuwa University of Sri Lanka</p>
-  </header>
+      <div class="nav-right">
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
 
-  <!-- About Section -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Hello! I am a second-year undergraduate student in Information Systems. 
-       I am passionate about learning IT skills, web development, cybersecurity, and databases. 
-       My goal is to build a strong foundation in programming and information systems while achieving a good GPA.</p>
-  </section>
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          type="button"
+          aria-label="Enable dark mode"
+          title="Toggle dark mode"
+        >
+          🌙
+        </button>
 
-  <!-- Projects Section -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects">
-      <div class="project-card">
-        <h3>Diabetes Prediction Website</h3>
-        <p>Created during a hackathon using machine learning models to predict diabetes risk.</p>
-        <a href="https://github.com/MayooriEkanthan/DiaSaver" target="_blank">View on GitHub</a>
-      </div>
-      <div class="project-card">
-        <h3>Maker's Magic - Sample Website</h3>
-        <p>A sample website created as part of a university assignment, showcasing a small online store concept.</p>
-        <a href="https://github.com/MushfiraMujeeb/Maker-s-Magic" target="_blank">View on GitHub</a>
-      </div>
-      <div class="project-card">
-        <h3>Movie Ticket Booking System (Java)</h3>
-        <p>Developed a console-based system in Java to browse movies, select showtimes, and book tickets.</p>
-        <a href="https://github.com/MushfiraMujeeb/java-practice" target="_blank">View on GitHub</a>
+        <button
+          id="menu-toggle"
+          class="menu-toggle"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="nav-links"
+        >
+          ☰
+        </button>
       </div>
     </div>
-  </section>
+  </nav>
 
-  <!-- Contact Section -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:mushfiramujeeb22@gmail.com">mushfiramujeeb22@gmail.com</a></p>
-    <p>GitHub: <a href="https://github.com/MushfiraMujeeb" target="_blank">github.com/MushfiraMujeeb</a></p>
-    <p>LinkedIn: <a href="http://www.linkedin.com/in/mushfira-mujeeb-430453307" target="_blank">linkedin.com/in/mushfira-mujeeb-430453307</a></p>
-  </section>
+  <main>
 
-  <!-- Footer -->
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+      <div class="container hero-content">
+        <div>
+          <p class="eyebrow">Hello, I am</p>
+
+          <h1>Mushfira Mujeeb</h1>
+
+          <h2>
+            Information Systems Undergraduate
+            <span>building meaningful digital experiences.</span>
+          </h2>
+
+          <p class="hero-description">
+            I am passionate about web development, cybersecurity, databases,
+            and using technology to solve real-world problems.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#projects" class="button primary-button">
+              View My Projects
+            </a>
+
+            <a href="cv.pdf" class="button secondary-button" download>
+              Download CV
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <img
+            src="profile.jpeg"
+            alt="Portrait of Mushfira Mujeeb"
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+
+        <p class="section-subtitle">
+          Learn more about my background and interests.
+        </p>
+
+        <div class="about-content">
+          <p>
+            Hello! I am a second-year undergraduate student studying
+            BSc (Hons) Information Systems at Sabaragamuwa University of
+            Sri Lanka. I am passionate about learning IT skills, web
+            development, cybersecurity, databases, and programming.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">My Skills</h2>
+
+        <p class="section-subtitle">
+          Technologies and areas I am currently learning.
+        </p>
+
+        <div class="skills-grid">
+          <article class="skill-card">
+            <span class="skill-icon">🌐</span>
+            <h3>Web Development</h3>
+            <p>HTML, CSS, responsive layouts, and user-friendly interfaces.</p>
+          </article>
+
+          <article class="skill-card">
+            <span class="skill-icon">💻</span>
+            <h3>Java Programming</h3>
+            <p>Object-oriented programming and console applications.</p>
+          </article>
+
+          <article class="skill-card">
+            <span class="skill-icon">🗄️</span>
+            <h3>Databases</h3>
+            <p>Database concepts, data organization, and SQL fundamentals.</p>
+          </article>
+
+          <article class="skill-card">
+            <span class="skill-icon">🔐</span>
+            <h3>Cybersecurity</h3>
+            <p>Learning security principles, privacy, and safe systems.</p>
+          </article>
+
+          <article class="skill-card">
+            <span class="skill-icon">🤖</span>
+            <h3>Machine Learning</h3>
+            <p>Basic exposure through a diabetes prediction project.</p>
+          </article>
+
+          <article class="skill-card">
+            <span class="skill-icon">📱</span>
+            <h3>Responsive Design</h3>
+            <p>Creating pages for mobile, tablet, and desktop devices.</p>
+          </article>
+
+          <article class="skill-card">
+            <span class="skill-icon">🐙</span>
+            <h3>GitHub</h3>
+            <p>Managing and sharing projects using GitHub repositories.</p>
+          </article>
+
+          <article class="skill-card">
+            <span class="skill-icon">🧠</span>
+            <h3>Problem Solving</h3>
+            <p>Breaking down problems and designing practical solutions.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+
+        <p class="section-subtitle">
+          Projects I have worked on during my learning journey.
+        </p>
+
+        <div class="projects">
+
+          <article class="project-card">
+            <h3>Diabetes Prediction Website</h3>
+
+            <p>
+              A machine-learning-based website created during a hackathon
+              to predict diabetes risk.
+            </p>
+
+            <ul class="technology-list">
+              <li>Machine Learning</li>
+              <li>Web Development</li>
+              <li>Hackathon</li>
+            </ul>
+
+            <a
+              class="project-link"
+              href="https://github.com/MayooriEkanthan/DiaSaver"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View on GitHub →
+            </a>
+          </article>
+
+          <article class="project-card">
+            <h3>Maker's Magic Website</h3>
+
+            <p>
+              A sample online store website created as part of a university
+              assignment.
+            </p>
+
+            <ul class="technology-list">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>Web Design</li>
+            </ul>
+
+            <a
+              class="project-link"
+              href="https://github.com/MushfiraMujeeb/Maker-s-Magic"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View on GitHub →
+            </a>
+          </article>
+
+          <article class="project-card">
+            <h3>Movie Ticket Booking System</h3>
+
+            <p>
+              A Java console application for browsing movies, selecting
+              showtimes, and booking tickets.
+            </p>
+
+            <ul class="technology-list">
+              <li>Java</li>
+              <li>Programming</li>
+              <li>Console Application</li>
+            </ul>
+
+            <a
+              class="project-link"
+              href="https://github.com/MushfiraMujeeb/java-practice"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View on GitHub →
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+      <div class="container">
+        <h2 class="section-title">Education</h2>
+
+        <div class="education-card">
+          <h3>BSc (Hons) Information Systems</h3>
+          <p>Sabaragamuwa University of Sri Lanka</p>
+          <p>Currently studying</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact Me</h2>
+
+        <p class="section-subtitle">
+          Feel free to connect with me.
+        </p>
+
+        <div class="contact-box">
+          <p>
+            Email:
+            <a href="mailto:mushfiramujeeb22@gmail.com">
+              mushfiramujeeb22@gmail.com
+            </a>
+          </p>
+
+          <p>
+            GitHub:
+            <a
+              href="https://github.com/MushfiraMujeeb"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              github.com/MushfiraMujeeb
+            </a>
+          </p>
+
+          <p>
+            LinkedIn:
+            <a
+              href="https://www.linkedin.com/in/mushfira-mujeeb-430453307"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn Profile
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
   <footer>
-    <p>© 2025 Mushfira Mujeeb. All rights reserved.</p>
+    <p>© 2026 Mushfira Mujeeb. All rights reserved.</p>
   </footer>
 
   <script>
-    /* Cursor animation script */
-    const cursor = document.querySelector('.cursor');
-    document.addEventListener('mousemove', e => {
-      cursor.style.left = e.pageX + 'px';
-      cursor.style.top = e.pageY + 'px';
+    const body = document.body;
+    const themeToggle = document.getElementById("theme-toggle");
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem("portfolio-theme");
+
+    if (
+      savedTheme === "dark" ||
+      (
+        savedTheme === null &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+      )
+    ) {
+      body.classList.add("dark-mode");
+    }
+
+    function updateThemeButton() {
+      const darkMode = body.classList.contains("dark-mode");
+
+      themeToggle.textContent = darkMode ? "☀️" : "🌙";
+      themeToggle.setAttribute(
+        "aria-label",
+        darkMode ? "Enable light mode" : "Enable dark mode"
+      );
+      themeToggle.setAttribute(
+        "title",
+        darkMode ? "Switch to light mode" : "Switch to dark mode"
+      );
+    }
+
+    updateThemeButton();
+
+    // Dark mode
+    themeToggle.addEventListener("click", () => {
+      body.classList.toggle("dark-mode");
+
+      const selectedTheme = body.classList.contains("dark-mode")
+        ? "dark"
+        : "light";
+
+      localStorage.setItem("portfolio-theme", selectedTheme);
+      updateThemeButton();
     });
 
-    document.addEventListener('mousedown', () => {
-      cursor.classList.add('active');
+    // Mobile navigation
+    menuToggle.addEventListener("click", () => {
+      const menuIsOpen = navLinks.classList.toggle("open");
+
+      menuToggle.setAttribute("aria-expanded", menuIsOpen);
+      menuToggle.setAttribute(
+        "aria-label",
+        menuIsOpen ? "Close navigation menu" : "Open navigation menu"
+      );
+      menuToggle.textContent = menuIsOpen ? "✕" : "☰";
     });
-    document.addEventListener('mouseup', () => {
-      cursor.classList.remove('active');
+
+    // Close mobile menu after selecting a link
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+        menuToggle.textContent = "☰";
+      });
     });
   </script>
+
 </body>
 </html>
